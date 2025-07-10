@@ -6,12 +6,12 @@
 			{!! html()->text('nama_kegiatan',NULL)->placeholder('Type Nama Kegiatan here')->class('form-control')->id('nama_kegiatan') !!}
 		</div>
          <div class='form-group'>
-            {!! html()->label('File Pendukung','file')->class('control-label') !!}
+            {!! html()->label('Foto','file')->class('control-label') !!}
             <span class="text-danger">*</span>
             <div class="file-loading">
                 {!! html()->file('file[]')->id('file')->class('file-drag-drop')->multiple()->data('overwrite-initial',false)->data('min-file-count',1) !!}
             </div>
-            <span class="text-danger">Allowed : jpg, jpeg, png, pdf, doc, docx, xls, xlsx</span>
+            <span class="text-danger">Allowed : jpg, jpeg, png</span>
         </div>
     </div>
 </div>

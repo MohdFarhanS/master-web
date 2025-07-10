@@ -9,7 +9,7 @@
 			</div>
               <div class="col-md-12">
                 <div class="form-group">
-                    <label>File Pendukung :</label>
+                    <label>Foto :</label>
                      @if(!$data->file->isEmpty())
                         <ul>
                             @foreach($data->file as $file)

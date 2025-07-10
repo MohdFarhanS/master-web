@@ -7,7 +7,7 @@
 		</div>
          @if(!$data->file->isEmpty())
             <div class="form-group">
-                <label class="control-label">File Pendukung Saat Ini :</label>
+                <label class="control-label">Foto Saat Ini :</label>
                 <table class="table">
                     @foreach($data->file as $file)
                         <tr id="{{ $file->id }}">
@@ -51,7 +51,7 @@
      $(".file-drag-drop").fileinput({
         theme: 'fa',
         uploadUrl: "/#",
-        allowedFileExtensions: ['jpg', 'jpeg', 'png', 'pdf'],
+        allowedFileExtensions: ['jpg', 'jpeg', 'png'],
         overwriteInitial: false,
         maxFileSize: 2048,
         maxFilesNum: 10,
