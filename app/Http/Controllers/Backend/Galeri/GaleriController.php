@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Backend\ProfilePimpinan;
+namespace App\Http\Controllers\Backend\Galeri;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
-class ProfilePimpinanController extends Controller
+class GaleriController extends Controller
 {
     public function index()
     {
@@ -43,10 +44,12 @@ class ProfilePimpinanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
+            'nama_kegiatan' => 'required',
+             'file.*' => 'nullable|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        if ($this->model::create($request->all())) {
+        if ( $galeri=$this->model::create($request->all())) {
+             $this->extracted($request, $galeri);
             $response=[ 'status'=>TRUE, 'message'=>'Data berhasil disimpan'];
         }
         return response()->json($response ?? ['status'=>FALSE, 'message'=>'Data gagal disimpan']);
@@ -67,11 +70,13 @@ class ProfilePimpinanController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required',
+            'nama_kegiatan' => 'required',
+            'file.*' => 'nullable|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         $data=$this->model::find($id);
         if($data->update($request->all())){
+            $this->extracted($request, $data);
             $response=[ 'status'=>TRUE, 'message'=>'Data berhasil disimpan'];
         }
         return response()->json($response ?? ['status'=>FALSE, 'message'=>'Data gagal disimpan']);
@@ -90,5 +95,18 @@ class ProfilePimpinanController extends Controller
             $response=[ 'status'=>TRUE, 'message'=>'Data berhasil dihapus'];
         }
         return response()->json($response ?? ['status'=>FALSE, 'message'=>'Data gagal dihapus']);
+    }
+     public function extracted(Request $request, $galeri): void
+    {
+        if ($request->hasFile('file')) {
+            foreach ($request->file('file') as $file) {
+                $galeri->file()->create([
+                    'data'=>[
+                        'name'  =>$file->getClientOriginalName(), 'disk'=>config('filesystems.default'),
+                        'target'=>Storage::disk(config('filesystems.default'))->putFile($this->code.'/'.date('Y').'/'.date('m').'/'.date('d'), $file),
+                    ]
+                ]);
+            }
+        }
     }
 }
