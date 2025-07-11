@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Backend\ProfilePimpinan;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use App\Models\ProfilePimpinan;
 
 class ProfilePimpinanController extends Controller
 {
@@ -46,10 +50,26 @@ class ProfilePimpinanController extends Controller
             'nama' => 'required',
         ]);
 
-        if ($this->model::create($request->all())) {
-            $response=[ 'status'=>TRUE, 'message'=>'Data berhasil disimpan'];
+        if ($data=$this->model::create($request->all())) {
+            if($request->hasFile('file')){
+                $data->file()->create([
+                    'data'=>[
+                        'name'=>$request->file('file')->getClientOriginalName(),
+                        'disk'=>config('filesystems.default'),
+                        'target'=>Storage::putFile($data->folder, $request->file('file')),
+                    ],
+                ]);
+            }
+            $response=[
+                'status'=>TRUE, 'message'=>'Data berhasil disimpan',
+            ];
         }
-        return response()->json($response ?? ['status'=>FALSE, 'message'=>'Data gagal disimpan']);
+        else {
+            $response=[
+                'status'=>FALSE, 'message'=>'Data gagal disimpan',
+            ];
+        }
+        return response()->json($response);
     }
 
     public function show($id)
@@ -92,3 +112,4 @@ class ProfilePimpinanController extends Controller
         return response()->json($response ?? ['status'=>FALSE, 'message'=>'Data gagal dihapus']);
     }
 }
+

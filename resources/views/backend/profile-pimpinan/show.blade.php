@@ -5,7 +5,20 @@
 				<div class="form-group">
 					{!! html()->span()->text("Nama")->class("control-label") !!}
 					{!! html()->p($data->nama)->class("form-control") !!}
+                    <label>Foto Pimpinan</label>
+                    @if(!is_null($data->file))
+                            @if($data->file->exists())
+                                <div class="form-group text-center">
+
+                                                @if($data->file->type == 'image')
+                                                    <img src="{!! url($data->file->link_stream) !!}" alt="{!! $data->file->name !!}" style="width: 80%; height: auto;" />
+                                                @endif
+
+                                </div>
+                            @endif
+            @endif
 				</div>
+
 			</div>
 		</div>
     </div>
