@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Backend\ProfileInstansi;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request;use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use App\Models\ProfileInstansi;
 
 class ProfileInstansiController extends Controller
 {
@@ -49,10 +52,26 @@ class ProfileInstansiController extends Controller
 			'tugas_fungsi' => 'required',
         ]);
 
-        if ($this->model::create($request->all())) {
-            $response=[ 'status'=>TRUE, 'message'=>'Data berhasil disimpan'];
+        if($data=$this->model::create($request->all())) {
+            if($request->hasFile('file')) {
+                $data->file()->create([
+                    'data'=>[
+                        'name'=>$request->file('file')->getClientOriginalName(),
+                        'disk'=>config('filesystems.default'),
+                        'target'=>Storage::putFile($data->folder, $request->file('file')),
+                    ],
+                ]);
+            }
+            $response=[
+                'status'=>TRUE, 'message'=>'Data Berhasil disimpan',
+            ];
         }
-        return response()->json($response ?? ['status'=>FALSE, 'message'=>'Data gagal disimpan']);
+        else {
+            $response=[
+                'status'=>FALSE, 'message'=>'Data gagal disimpan',
+            ];
+        }
+        return response()->json($response);
     }
 
     public function show($id)

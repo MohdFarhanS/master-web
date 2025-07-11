@@ -3,7 +3,7 @@
     <div class="panel-body">
         <div class='form-group'>
 			{!! html()->label()->class('control-label')->for('kata_pengantar')->text('Kata Pengantar') !!}
-			{!! html()->text('kata_pengantar',NULL)->placeholder('Type Kata Pengantar here')->class('form-control')->id('kata_pengantar') !!}
+			{!! html()->text('kata_pengantar',NULL)->placeholder('Ketik disini')->class('form-control')->id('kata_pengantar') !!}
 		</div>
 		<div class='form-group'>
 			{!! html()->label()->class('control-label')->for('sejarah_singkat')->text('Sejarah Singkat') !!}
@@ -17,6 +17,11 @@
 			{!! html()->label()->class('control-label')->for('tugas_fungsi')->text('Tugas Fungsi') !!}
 			{!! html()->text('tugas_fungsi',NULL)->placeholder('Type Tugas Fungsi here')->class('form-control')->id('tugas_fungsi') !!}
 		</div>
+		<div class='form-group'>
+            {!! html()->label('Foto Struktur Organisasi')->text('Unggah Foto')->class('control-label') !!}
+            <span class="text-danger">Allowed : jpeg,png</span><br>
+            {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png') !!}
+        </div>
     </div>
 </div>
 {!! html()->hidden('table-id','datatable')->id('table-id') !!}
