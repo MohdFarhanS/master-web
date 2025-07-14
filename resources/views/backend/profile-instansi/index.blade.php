@@ -1,5 +1,5 @@
 @extends('backend.main.index')
-@push('title', $page->title ?? 'Profilepimpinan')
+@push('title', $page->title ?? 'Profileinstansi')
 @section('content')
     <div class="content-wrapper">
         <div class="container-full">
@@ -34,7 +34,10 @@
 									<thead>
 									<tr>
 										<th class="w-0">No</th>
-										<th>Nama</th>
+										<th>Kata Pengantar</th>
+										<th>Sejarah Singkat</th>
+										<th>Visi Misi</th>
+										<th>Tugas Fungsi</th>
 										<th class="text-center w-0">Action</th>
 									</tr>
 									</thead>
@@ -54,6 +57,15 @@
     <script src="{{ url($template.'/assets/vendor_components/sweetalert/sweetalert.min.js') }}"></script>
     <script src="{{ url($template.'/assets/vendor_components/jquery-validation-1.17.0/lib/jquery.form.js') }}"></script>
     <script src="{{ url($template.'/assets/vendor_components/datatable/datatables.min.js') }}"></script>
+<<<<<<< HEAD:resources/views/backend/profile-instansi/index.blade.php
+    <script src="{{ url($template.'/assets/vendor_plugins/summernote/summernote-lite.min.js') }}"></script>
+    <script src="{{ url('/js/'.$backend.'/'.$page->code.'/datatable.js') }}"></script>
+    <script src="{{ url('js/jquery-crud.js') }}"></script>
+@endpush
+@push('css')
+    <link rel="stylesheet" href="{{ url($template.'/assets/vendor_plugins/summernote/summernote-lite.css') }}">
+@endpush
+=======
     
     <script src="{{ url($template.'/assets/vendor_plugins/summernote/summernote-lite.min.js') }}"></script>
 
@@ -64,3 +76,4 @@
 @push('css')
     <link rel="stylesheet" href="{{ url($template.'/assets/vendor_plugins/summernote/summernote-lite.css') }}">
 @endpush
+>>>>>>> 95e9f280c176d841f8069ab1a8223dbb9bdfc42b:resources/views/backend/profile-pimpinan/index.blade.php

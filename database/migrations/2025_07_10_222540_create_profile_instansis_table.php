@@ -13,14 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('profile_pimpinans', function (Blueprint $table) {
+        Schema::create('profile_instansis', function (Blueprint $table) {
             $table->uuid("id")->primary();
-			$table->string("nama")->nullable();
+			$table->text("kata_pengantar")->nullable();
+			$table->text("sejarah_singkat")->nullable();
+			$table->text("visi_misi")->nullable();
+			$table->text("tugas_fungsi")->nullable();
 			$table->timestamps();
 			$table->softDeletes();
         });
 
-        Schema::table('profile_pimpinans', function (Blueprint $table) {
+        Schema::table('profile_instansis', function (Blueprint $table) {
             
         });
     }
@@ -32,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profile_pimpinans');
+        Schema::dropIfExists('profile_instansis');
     }
 };
