@@ -57,18 +57,7 @@
     <script src="{{ url($template.'/assets/vendor_components/sweetalert/sweetalert.min.js') }}"></script>
     <script src="{{ url($template.'/assets/vendor_components/jquery-validation-1.17.0/lib/jquery.form.js') }}"></script>
     <script src="{{ url($template.'/assets/vendor_components/datatable/datatables.min.js') }}"></script>
-<<<<<<< HEAD:resources/views/backend/profile-instansi/index.blade.php
     <script src="{{ url($template.'/assets/vendor_plugins/summernote/summernote-lite.min.js') }}"></script>
-    <script src="{{ url('/js/'.$backend.'/'.$page->code.'/datatable.js') }}"></script>
-    <script src="{{ url('js/jquery-crud.js') }}"></script>
-@endpush
-@push('css')
-    <link rel="stylesheet" href="{{ url($template.'/assets/vendor_plugins/summernote/summernote-lite.css') }}">
-@endpush
-=======
-    
-    <script src="{{ url($template.'/assets/vendor_plugins/summernote/summernote-lite.min.js') }}"></script>
-
     <script src="{{ url('/js/'.$backend.'/'.$page->code.'/datatable.js') }}"></script>
     <script src="{{ url('js/jquery-crud.js') }}"></script>
 @endpush
@@ -76,4 +65,3 @@
 @push('css')
     <link rel="stylesheet" href="{{ url($template.'/assets/vendor_plugins/summernote/summernote-lite.css') }}">
 @endpush
->>>>>>> 95e9f280c176d841f8069ab1a8223dbb9bdfc42b:resources/views/backend/profile-pimpinan/index.blade.php
