@@ -16,6 +16,13 @@ Route::group(['prefix'=>config('mvc.route_prefix')], function () { // remove thi
 		});
 		Route::resource('profile-pimpinan', 'ProfilePimpinan\ProfilePimpinanController');
 		//end-profile-pimpinan
+		//dashboard-instansi
+		Route::prefix('dashboard-instansi')->as('dashboard-instansi')->group(function () {
+			Route::get('data', 'DashboardInstansi\DashboardInstansiController@data');
+			Route::get('delete/{id}', 'DashboardInstansi\DashboardInstansiController@delete');
+		});
+		Route::resource('dashboard-instansi', 'DashboardInstansi\DashboardInstansiController');
+		//end-dashboard-instansi
 		//{{route replacer}} DON'T REMOVE THIS LINE
     });
 });
