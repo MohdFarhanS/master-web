@@ -15,13 +15,13 @@
 			</div>
 			<div class="col-md-6">
 				<div class="form-group">
-					{!! html()->span()->text("Visi Misi")->class("control-label") !!}
+					{!! html()->span()->text("Visi dan Misi")->class("control-label") !!}
 					{!! html()->p($data->visi_misi)->class("form-control") !!}
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="form-group">
-					{!! html()->span()->text("Tugas Fungsi")->class("control-label") !!}
+					{!! html()->span()->text("Tugas dan Fungsi")->class("control-label") !!}
 					{!! html()->p($data->tugas_fungsi)->class("form-control") !!}
 				</div>
 			</div>
@@ -30,11 +30,9 @@
                     @if(!is_null($data->file))
                             @if($data->file->exists())
                                 <div class="form-group text-center">
-
-                                                @if($data->file->type == 'image')
-                                                    <img src="{!! url($data->file->link_stream) !!}" alt="{!! $data->file->name !!}" style="width: 80%; height: auto;" />
-                                                @endif
-
+									@if($data->file->type == 'image')
+										<img src="{!! url($data->file->link_stream) !!}" alt="{!! $data->file->name !!}" style="width: 80%; height: auto;" />
+									@endif
                                 </div>
                             @endif
             		@endif

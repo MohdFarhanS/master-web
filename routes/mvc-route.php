@@ -23,6 +23,13 @@ Route::group(['prefix'=>config('mvc.route_prefix')], function () { // remove thi
 		});
 		Route::resource('dashboard-instansi', 'DashboardInstansi\DashboardInstansiController');
 		//end-dashboard-instansi
+		//berita
+		Route::prefix('berita')->as('berita')->group(function () {
+			Route::get('data', 'Berita\BeritaController@data');
+			Route::get('delete/{id}', 'Berita\BeritaController@delete');
+		});
+		Route::resource('berita', 'Berita\BeritaController');
+		//end-berita
 		//{{route replacer}} DON'T REMOVE THIS LINE
     });
 });
