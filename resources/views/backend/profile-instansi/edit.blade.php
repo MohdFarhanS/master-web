@@ -3,19 +3,19 @@
     <div class="panel-body">
         <div class='form-group'>
 			{!! html()->label()->class('control-label')->for('kata_pengantar')->text('Kata Pengantar') !!}
-			{!! html()->text('kata_pengantar',$data->kata_pengantar)->placeholder('Type Kata Pengantar here')->class('form-control')->id('kata_pengantar') !!}
+			{!! html()->text('kata_pengantar',$data->kata_pengantar)->placeholder('Ketik Disini')->class('form-control')->id('kata_pengantar') !!}
 		</div>
 		<div class='form-group'>
 			{!! html()->label()->class('control-label')->for('sejarah_singkat')->text('Sejarah Singkat') !!}
-			{!! html()->text('sejarah_singkat',$data->sejarah_singkat)->placeholder('Type Sejarah Singkat here')->class('form-control')->id('sejarah_singkat') !!}
+			{!! html()->text('sejarah_singkat',$data->sejarah_singkat)->placeholder('Ketik Disini')->class('form-control')->id('sejarah_singkat') !!}
 		</div>
 		<div class='form-group'>
 			{!! html()->label()->class('control-label')->for('visi_misi')->text('Visi Misi') !!}
-			{!! html()->text('visi_misi',$data->visi_misi)->placeholder('Type Visi Misi here')->class('form-control')->id('visi_misi') !!}
+			{!! html()->text('visi_misi',$data->visi_misi)->placeholder('Ketik Disini')->class('form-control')->id('visi_misi') !!}
 		</div>
 		<div class='form-group'>
 			{!! html()->label()->class('control-label')->for('tugas_fungsi')->text('Tugas Fungsi') !!}
-			{!! html()->text('tugas_fungsi',$data->tugas_fungsi)->placeholder('Type Tugas Fungsi here')->class('form-control')->id('tugas_fungsi') !!}
+			{!! html()->text('tugas_fungsi',$data->tugas_fungsi)->placeholder('Ketik Disini')->class('form-control')->id('tugas_fungsi') !!}
 		</div>
     </div>
 </div>

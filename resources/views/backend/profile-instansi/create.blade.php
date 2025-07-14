@@ -2,25 +2,29 @@
 <div class="panel shadow-sm">
     <div class="panel-body">
         <div class='form-group'>
-			{!! html()->label()->class('control-label')->for('kata_pengantar')->text('Kata Pengantar') !!}
-			{!! html()->text('kata_pengantar',NULL)->placeholder('Ketik disini')->class('form-control')->id('kata_pengantar') !!}
+			{!! html()->label('Kata Pengantar', 'content')->class('control-label')->for('kata_pengantar')->text('Kata Pengantar') !!}
+            <span class="text-danger">*</span>
+			{!! html()->text('kata_pengantar')->placeholder('Ketik disini')->class('form-control')->id('kata_pengantar')-> required() !!}
 		</div>
 		<div class='form-group'>
-			{!! html()->label()->class('control-label')->for('sejarah_singkat')->text('Sejarah Singkat') !!}
-			{!! html()->text('sejarah_singkat',NULL)->placeholder('Type Sejarah Singkat here')->class('form-control')->id('sejarah_singkat') !!}
+			{!! html()->label('Sejarah Singkat', 'content')->class('control-label')->for('sejarah_singkat')->text('Sejarah Singkat') !!}
+            <span class="text-danger">*</span>
+			{!! html()->textarea('sejarah_singkat')->placeholder('Ketik Disini')->class('form-control')->id('sejarah_singkat')-> required() !!}
 		</div>
 		<div class='form-group'>
-			{!! html()->label()->class('control-label')->for('visi_misi')->text('Visi Misi') !!}
-			{!! html()->text('visi_misi',NULL)->placeholder('Type Visi Misi here')->class('form-control')->id('visi_misi') !!}
+			{!! html()->label('Visi Misi', 'content')->class('control-label')->for('visi_misi')->text('Visi Misi') !!}
+            <span class="text-danger">*</span>
+			{!! html()->textarea('visi_misi')->placeholder('Ketik Disini')->class('form-control')->id('visi_misi')-> required() !!}
 		</div>
 		<div class='form-group'>
-			{!! html()->label()->class('control-label')->for('tugas_fungsi')->text('Tugas Fungsi') !!}
-			{!! html()->text('tugas_fungsi',NULL)->placeholder('Type Tugas Fungsi here')->class('form-control')->id('tugas_fungsi') !!}
+			{!! html()->label('Tugas dan Fungsi', 'content')->class('control-label')->for('tugas_fungsi')->text('Tugas Fungsi') !!}
+            <span class="text-danger">*</span>
+			{!! html()->textarea('tugas_fungsi')->placeholder('Ketik Disini')->class('form-control')->id('tugas_fungsi')-> required() !!}
 		</div>
 		<div class='form-group'>
-            {!! html()->label('Foto Struktur Organisasi')->text('Unggah Foto')->class('control-label') !!}
-            <span class="text-danger">Allowed : jpeg,png</span><br>
-            {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png') !!}
+            {!! html()->label('Foto Struktur Organisasi', 'file')->text('Unggah Foto')->class('control-label') !!}
+            <span class="text-danger">Allowed : jpeg,png,jpg</span><br>
+            {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png,image/jpg') !!}
         </div>
     </div>
 </div>
