@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Backend\ProfilePimpinan;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+// Tambahan
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ProfilePimpinan;
+// end
 
 class ProfilePimpinanController extends Controller
 {
@@ -50,6 +52,7 @@ class ProfilePimpinanController extends Controller
             'nama' => 'required',
         ]);
 
+        // Tambahan
         if ($data=$this->model::create($request->all())) {
             if($request->hasFile('file')){
                 $data->file()->create([
@@ -63,13 +66,16 @@ class ProfilePimpinanController extends Controller
             $response=[
                 'status'=>TRUE, 'message'=>'Data berhasil disimpan',
             ];
+            // end
         }
+        // Tambahan
         else {
             $response=[
                 'status'=>FALSE, 'message'=>'Data gagal disimpan',
             ];
         }
         return response()->json($response);
+        // end
     }
 
     public function show($id)

@@ -2,14 +2,18 @@
 <div class="panel shadow-sm">
     <div class="panel-body">
         <div class='form-group'>
+            {{-- {!! Tambahan !!} --}}
 			{!! html()->label()->class('control-label')->for('nama')->text('Nama Pimpinan') !!}
-			{!! html()->text('nama',NULL)->placeholder('Type Nama here')->class('form-control')->id('nama') !!}
+            {{-- {!! end !!} --}}
+            {!! html()->text('nama',NULL)->placeholder('Type Nama here')->class('form-control')->id('nama') !!}
 		</div>
+        {{-- {!! Tambahan !!} --}}
         <div class='form-group'>
             {!! html()->label('Foto Pimpinan')->text('Unggah Foto Pimpinan')->class('control-label') !!}
             <span class="text-danger">Allowed : jpeg,png</span><br>
             {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png') !!}
         </div>
+        {{-- {!! Tambahan !!} --}}
     </div>
 </div>
 {!! html()->hidden('table-id','datatable')->id('table-id') !!}
