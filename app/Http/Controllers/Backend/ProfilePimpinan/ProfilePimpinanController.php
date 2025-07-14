@@ -1,17 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Backend\ProfileInstansi;
+namespace App\Http\Controllers\Backend\ProfilePimpinan;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-// Tambahan
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use App\Models\ProfileInstansi;
-// end
+use App\Models\ProfilePimpinan;
 
-class ProfileInstansiController extends Controller
+class ProfilePimpinanController extends Controller
 {
     public function index()
     {
@@ -49,14 +46,9 @@ class ProfileInstansiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kata_pengantar' => 'required',
-			'sejarah_singkat' => 'required',
-			'visi_misi' => 'required',
-			'tugas_fungsi' => 'required',
+            'nama' => 'required',
         ]);
 
-
-        // Tambahan
         if ($data=$this->model::create($request->all())) {
             if($request->hasFile('file')){
                 $data->file()->create([
@@ -70,16 +62,13 @@ class ProfileInstansiController extends Controller
             $response=[
                 'status'=>TRUE, 'message'=>'Data berhasil disimpan',
             ];
-            // end
         }
-        // Tambahan
         else {
             $response=[
                 'status'=>FALSE, 'message'=>'Data gagal disimpan',
             ];
         }
         return response()->json($response);
-        // end
     }
 
     public function show($id)
@@ -97,10 +86,7 @@ class ProfileInstansiController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'kata_pengantar' => 'required',
-			'sejarah_singkat' => 'required',
-			'visi_misi' => 'required',
-			'tugas_fungsi' => 'required',
+            'nama' => 'required',
             'file.*' => 'nullable|mimes:jpg,jpeg,png|max:2048',
         ]);
 
@@ -126,4 +112,3 @@ class ProfileInstansiController extends Controller
         return response()->json($response ?? ['status'=>FALSE, 'message'=>'Data gagal dihapus']);
     }
 }
-
