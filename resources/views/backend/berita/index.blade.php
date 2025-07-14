@@ -1,5 +1,5 @@
 @extends('backend.main.index')
-@push('title', $page->title ?? 'Profilepimpinan')
+@push('title', $page->title ?? 'Berita')
 @section('content')
     <div class="content-wrapper">
         <div class="container-full">
@@ -34,7 +34,9 @@
 									<thead>
 									<tr>
 										<th class="w-0">No</th>
-										<th>Nama</th>
+										<th>Judul</th>
+										<th>Deskripsi</th>
+										<th>Tanggal</th>
 										<th class="text-center w-0">Action</th>
 									</tr>
 									</thead>

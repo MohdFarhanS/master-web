@@ -2,7 +2,7 @@
 <div class="panel shadow-sm">
     <div class="panel-body">
         <div class='form-group'>
-			{!! html()->label('Nama Instansi')->class('control-label')->for('nama_instansi')->text('Nama Instansi') !!}
+			{!! html()->label('Nama Instansi', 'nama_instansi')->class('control-label')->for('nama_instansi')->text('Nama Instansi') !!}
             <span class="text-danger">*</span>
 			{!! html()->text('nama_instansi',NULL)->placeholder('Ketik Disini')->class('form-control')->id('nama_instansi')->required() !!}
 		</div>

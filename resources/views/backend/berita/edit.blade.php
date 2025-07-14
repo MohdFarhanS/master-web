@@ -2,8 +2,16 @@
 <div class="panel shadow-sm">
     <div class="panel-body">
         <div class='form-group'>
-			{!! html()->label('Nama Instansi', 'nama_instansi')->class('control-label')->for('nama_instansi')->text('Ubah Nama Instansi') !!}
-			{!! html()->text('nama_instansi',$data->nama_instansi)->placeholder('Ketik Disini')->class('form-control')->id('nama_instansi')->required() !!}
+			{!! html()->label('Judul Berita', 'judul')->class('control-label')->for('judul')->text('Ubah Judul Berita') !!}
+			{!! html()->textarea('judul',$data->judul)->class('form-control')->placeholder('Ketik Disini')->id('judul')->required() !!}
+		</div>
+		<div class='form-group'>
+			{!! html()->label('Deskripsi', 'deskripsi')->class('control-label')->for('deskripsi')->text('Ubah Deskripsi') !!}
+			{!! html()->textarea('deskripsi',$data->deskripsi)->class('form-control')->placeholder('Ketik Disini')->id('deskripsi')->required() !!}
+		</div>
+		<div class='form-group'>
+			{!! html()->label()->class('control-label')->for('tanggal')->text('Ubah Tanggal') !!}
+			{!! html()->date('tanggal',$data->tanggal)->class('form-control')->id('tanggal')->required() !!}
 		</div>
     </div>
 </div>
