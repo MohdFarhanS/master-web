@@ -4,7 +4,7 @@
         <div class='form-group'>
 			{!! html()->label('Kata Pengantar')->class('control-label')->for('kata_pengantar')->text('Kata Pengantar') !!}
             <span class="text-danger">*</span>
-			{!! html()->text('kata_pengantar')->placeholder('Ketik disini')->class('form-control')->id('kata_pengantar')-> required() !!}
+			{!! html()->textarea('kata_pengantar')->placeholder('Ketik disini')->class('form-control')->id('kata_pengantar')-> required() !!}
 		</div>
 		<div class='form-group'>
 			{!! html()->label('Sejarah Singkat')->class('control-label')->for('sejarah_singkat')->text('Sejarah Singkat') !!}
