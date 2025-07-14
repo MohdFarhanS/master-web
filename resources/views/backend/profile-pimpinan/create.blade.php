@@ -2,13 +2,15 @@
 <div class="panel shadow-sm">
     <div class="panel-body">
         <div class='form-group'>
-			{!! html()->label()->class('control-label')->for('nama')->text('Nama') !!}
-			{!! html()->text('nama',NULL)->placeholder('Type Nama here')->class('form-control')->id('nama') !!}
+			{!! html()->label('Nama Pimpinan', 'nama')->class('control-label')->for('nama')->text('Nama') !!}
+            <span class="text-danger">*</span>
+			{!! html()->text('nama')->placeholder('Ketik Disini')->class('form-control')->id('nama')->required() !!}
 		</div>
         <div class='form-group'>
             {!! html()->label('Foto Pimpinan', 'file')->text('Unggah Foto')->class('control-label') !!}
+            <span class="text-danger">*</span>
             <span class="text-danger">Allowed : jpeg,png,jpg</span><br>
-            {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png,image/jpg') !!}
+            {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png,image/jpg')->required() !!}
         </div>
     </div>
 </div>

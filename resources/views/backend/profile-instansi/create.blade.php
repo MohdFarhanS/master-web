@@ -2,22 +2,22 @@
 <div class="panel shadow-sm">
     <div class="panel-body">
         <div class='form-group'>
-			{!! html()->label('Kata Pengantar', 'content')->class('control-label')->for('kata_pengantar')->text('Kata Pengantar') !!}
+			{!! html()->label('Kata Pengantar')->class('control-label')->for('kata_pengantar')->text('Kata Pengantar') !!}
             <span class="text-danger">*</span>
 			{!! html()->text('kata_pengantar')->placeholder('Ketik disini')->class('form-control')->id('kata_pengantar')-> required() !!}
 		</div>
 		<div class='form-group'>
-			{!! html()->label('Sejarah Singkat', 'content')->class('control-label')->for('sejarah_singkat')->text('Sejarah Singkat') !!}
+			{!! html()->label('Sejarah Singkat')->class('control-label')->for('sejarah_singkat')->text('Sejarah Singkat') !!}
             <span class="text-danger">*</span>
 			{!! html()->textarea('sejarah_singkat')->placeholder('Ketik Disini')->class('form-control')->id('sejarah_singkat')-> required() !!}
 		</div>
 		<div class='form-group'>
-			{!! html()->label('Visi Misi', 'content')->class('control-label')->for('visi_misi')->text('Visi Misi') !!}
+			{!! html()->label('Visi Misi')->class('control-label')->for('visi_misi')->text('Visi Misi') !!}
             <span class="text-danger">*</span>
 			{!! html()->textarea('visi_misi')->placeholder('Ketik Disini')->class('form-control')->id('visi_misi')-> required() !!}
 		</div>
 		<div class='form-group'>
-			{!! html()->label('Tugas dan Fungsi', 'content')->class('control-label')->for('tugas_fungsi')->text('Tugas Fungsi') !!}
+			{!! html()->label('Tugas dan Fungsi')->class('control-label')->for('tugas_fungsi')->text('Tugas Fungsi') !!}
             <span class="text-danger">*</span>
 			{!! html()->textarea('tugas_fungsi')->placeholder('Ketik Disini')->class('form-control')->id('tugas_fungsi')-> required() !!}
 		</div>
