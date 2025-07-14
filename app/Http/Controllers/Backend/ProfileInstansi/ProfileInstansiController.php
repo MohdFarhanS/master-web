@@ -3,10 +3,20 @@
 namespace App\Http\Controllers\Backend\ProfileInstansi;
 
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD:app/Http/Controllers/Backend/ProfileInstansi/ProfileInstansiController.php
 use Illuminate\Http\Request;use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ProfileInstansi;
+=======
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+// Tambahan
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use App\Models\ProfilePimpinan;
+// end
+>>>>>>> 95e9f280c176d841f8069ab1a8223dbb9bdfc42b:app/Http/Controllers/Backend/ProfilePimpinan/ProfilePimpinanController.php
 
 class ProfileInstansiController extends Controller
 {
@@ -52,8 +62,14 @@ class ProfileInstansiController extends Controller
 			'tugas_fungsi' => 'required',
         ]);
 
+<<<<<<< HEAD:app/Http/Controllers/Backend/ProfileInstansi/ProfileInstansiController.php
         if($data=$this->model::create($request->all())) {
             if($request->hasFile('file')) {
+=======
+        // Tambahan
+        if ($data=$this->model::create($request->all())) {
+            if($request->hasFile('file')){
+>>>>>>> 95e9f280c176d841f8069ab1a8223dbb9bdfc42b:app/Http/Controllers/Backend/ProfilePimpinan/ProfilePimpinanController.php
                 $data->file()->create([
                     'data'=>[
                         'name'=>$request->file('file')->getClientOriginalName(),
@@ -63,15 +79,27 @@ class ProfileInstansiController extends Controller
                 ]);
             }
             $response=[
+<<<<<<< HEAD:app/Http/Controllers/Backend/ProfileInstansi/ProfileInstansiController.php
                 'status'=>TRUE, 'message'=>'Data Berhasil disimpan',
             ];
         }
+=======
+                'status'=>TRUE, 'message'=>'Data berhasil disimpan',
+            ];
+            // end
+        }
+        // Tambahan
+>>>>>>> 95e9f280c176d841f8069ab1a8223dbb9bdfc42b:app/Http/Controllers/Backend/ProfilePimpinan/ProfilePimpinanController.php
         else {
             $response=[
                 'status'=>FALSE, 'message'=>'Data gagal disimpan',
             ];
         }
         return response()->json($response);
+<<<<<<< HEAD:app/Http/Controllers/Backend/ProfileInstansi/ProfileInstansiController.php
+=======
+        // end
+>>>>>>> 95e9f280c176d841f8069ab1a8223dbb9bdfc42b:app/Http/Controllers/Backend/ProfilePimpinan/ProfilePimpinanController.php
     }
 
     public function show($id)
@@ -118,3 +146,4 @@ class ProfileInstansiController extends Controller
         return response()->json($response ?? ['status'=>FALSE, 'message'=>'Data gagal dihapus']);
     }
 }
+
