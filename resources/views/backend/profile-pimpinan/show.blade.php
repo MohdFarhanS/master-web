@@ -3,12 +3,12 @@
         <div class="row">
 			<div class="col-md-6">
 				<div class="form-group">
-					{!! html()->span()->text("Nama")->class("control-label") !!}
+					{!! html()->span()->text("Nama Pimpinan")->class("control-label") !!}
 					{!! html()->p($data->nama)->class("form-control") !!}
 				</div>
 			</div>
             <div>
-				<label>Pimpinan</label>
+				<label>Foto Pimpinan</label>
                     @if(!is_null($data->file))
                             @if($data->file->exists())
                                 <div class="form-group text-center">
