@@ -16,8 +16,9 @@ return new class extends Migration
         Schema::create('beritas', function (Blueprint $table) {
             $table->uuid("id")->primary();
 			$table->text("judul")->nullable();
-			$table->text("deskripsi")->nullable();
+			$table->longText("deskripsi")->nullable();
 			$table->date("tanggal")->nullable();
+			$table->foreignUuid("user_id")->nullable()->constrained();
 			$table->timestamps();
 			$table->softDeletes();
         });
