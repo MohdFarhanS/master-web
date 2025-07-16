@@ -47,6 +47,7 @@ class ProfilePimpinanController extends Controller
     {
         $request->validate([
             'nama' => 'required',
+            'file.*' => 'nullable|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         if ($data=$this->model::create($request->all())) {

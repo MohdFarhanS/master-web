@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Backend\Berita;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use App\Models\Berita;
 
 class BeritaController extends Controller
 {
@@ -45,13 +48,30 @@ class BeritaController extends Controller
         $request->validate([
             'judul' => 'required',
 			'deskripsi' => 'required',
-			'tanggal' => 'required',
+            'tanggal'   => 'required|date',
+            'file.*' => 'nullable|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        if ($this->model::create($request->all())) {
-            $response=[ 'status'=>TRUE, 'message'=>'Data berhasil disimpan'];
+        if ($data=$this->model::create($request->all())) {
+            if($request->hasFile('file')){
+                $data->file()->create([
+                    'data'=>[
+                        'name'=>$request->file('file')->getClientOriginalName(),
+                        'disk'=>config('filesystems.default'),
+                        'target'=>Storage::putFile($data->folder, $request->file('file')),
+                    ],
+                ]);
+            }
+            $response=[
+                'status'=>TRUE, 'message'=>'Data berhasil disimpan',
+            ];
         }
-        return response()->json($response ?? ['status'=>FALSE, 'message'=>'Data gagal disimpan']);
+        else {
+            $response=[
+                'status'=>FALSE, 'message'=>'Data gagal disimpan',
+            ];
+        }
+        return response()->json($response);
     }
 
     public function show($id)
@@ -71,7 +91,8 @@ class BeritaController extends Controller
         $request->validate([
             'judul' => 'required',
 			'deskripsi' => 'required',
-			'tanggal' => 'required',
+            'tanggal'   => 'required|date',
+            'file.*' => 'nullable|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         $data=$this->model::find($id);

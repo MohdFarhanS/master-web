@@ -48,6 +48,7 @@ class DashboardInstansiController extends Controller
     {
         $request->validate([
             'nama_instansi' => 'required',
+            'file.*' => 'nullable|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         if ($data=$this->model::create($request->all())) {

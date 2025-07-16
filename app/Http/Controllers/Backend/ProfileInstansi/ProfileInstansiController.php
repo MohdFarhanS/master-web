@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Models\ProfileInstansi;
-// end
 
 class ProfileInstansiController extends Controller
 {
@@ -56,7 +55,6 @@ class ProfileInstansiController extends Controller
         ]);
 
 
-        // Tambahan
         if ($data=$this->model::create($request->all())) {
             if($request->hasFile('file')){
                 $data->file()->create([
