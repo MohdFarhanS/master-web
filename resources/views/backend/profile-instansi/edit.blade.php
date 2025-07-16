@@ -17,6 +17,11 @@
 			{!! html()->label('Edit Tugas dan Fungsi', 'tugas_fungsi')->class('control-label')->for('tugas_fungsi') !!}
 			{!! html()->text('tugas_fungsi',$data->tugas_fungsi)->placeholder('Ketik Disini')->class('form-control')->id('tugas_fungsi') !!}
 		</div>
+        <div class='form-group'>
+            {!! html()->label('Unggah Struktur Organisasi')->text('Unggah Struktur Organisasi')->class('control-label') !!}
+            <span class="text-danger">Allowed : jpeg,png</span><br>
+            {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png') !!}
+        </div>
     </div>
 </div>
 {!! html()->hidden('table-id','datatable')->id('table-id') !!}
