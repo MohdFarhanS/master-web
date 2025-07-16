@@ -1,12 +1,12 @@
 <div class="panel shadow-sm">
     <div class="panel-body">
         <div class="row">
-			<div class="col-md-6">
-				<div class="form-grou2p">
-					{!! html()->span()->text("Nama Instansi")->class("control-label") !!}
-					{!! html()->p($data->nama_instansi)->class("form-control") !!}
-				</div>
-			</div>
+			<div class="col-md-12">
+                <div class="form-group">
+                    <label>Nama Instansi :</label>
+                    {{  $data->nama_instansi }}
+                </div>
+            </div>
             <div>
 				<label>Banner</label>
                     @if(!is_null($data->file))
@@ -14,7 +14,7 @@
                                 <div class="form-group text-center">
 
                                 @if($data->file->type == 'image')
-                                    <img src="{!! url($data->file->link_stream) !!}" alt="{!! $data->file->name !!}" style="width: 80%; height: auto;" />
+                                    <img src="{!! url($data->file->link_stream) !!}" alt="{!! $data->file->name !!}" style="width: 30%; height: auto;" />
                                 @endif
 
                                 </div>

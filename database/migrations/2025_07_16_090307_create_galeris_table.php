@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('galeris', function (Blueprint $table) {
             $table->uuid("id")->primary();
-			$table->string("nama_kegiatan")->nullable();
+			$table->string("nama_kegiatan");
 			$table->timestamps();
 			$table->softDeletes();
         });

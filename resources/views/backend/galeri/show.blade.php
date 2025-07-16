@@ -1,19 +1,19 @@
 <div class="panel shadow-sm">
     <div class="panel-body">
         <div class="row">
-			<div class="col-md-6">
-				<div class="form-group">
-					{!! html()->span()->text("Nama Kegiatan")->class("control-label") !!}
-					{!! html()->p($data->nama_kegiatan)->class("form-control") !!}
-				</div>
-			</div>
+			<div class="col-md-12">
+                <div class="form-group">
+                    <label>Nama Kegiatan :</label>
+                    {{  $data->nama_kegiatan }}
+                </div>
+            </div>
             <div>
 				<label>Foto Kegiatan</label>
                     @if(!is_null($data->file))
                             @if($data->file->exists())
                                 <div class="form-group text-center">
 									@if($data->file->type == 'image')
-										<img src="{!! url($data->file->link_stream) !!}" alt="{!! $data->file->name !!}" style="width: 80%; height: auto;" />
+										<img src="{!! url($data->file->link_stream) !!}" alt="{!! $data->file->name !!}" style="width: 30%; height: auto;" />
 									@endif
                                 </div>
                             @endif

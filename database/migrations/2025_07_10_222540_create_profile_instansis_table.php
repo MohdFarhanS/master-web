@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('profile_instansis', function (Blueprint $table) {
             $table->uuid("id")->primary();
-			$table->text("kata_pengantar")->nullable();
-			$table->text("sejarah_singkat")->nullable();
-			$table->text("visi_misi")->nullable();
-			$table->text("tugas_fungsi")->nullable();
+			$table->text("kata_pengantar");
+			$table->text("sejarah_singkat");
+			$table->text("visi_misi");
+			$table->text("tugas_fungsi");
 			$table->timestamps();
 			$table->softDeletes();
         });

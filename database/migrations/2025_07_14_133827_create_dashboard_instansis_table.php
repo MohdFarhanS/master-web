@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('dashboard_instansis', function (Blueprint $table) {
             $table->uuid("id")->primary();
-			$table->string("nama_instansi")->nullable();
+			$table->string("nama_instansi");
 			$table->timestamps();
 			$table->softDeletes();
         });

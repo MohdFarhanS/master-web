@@ -2,27 +2,27 @@
 <div class="panel shadow-sm">
     <div class="panel-body">
         <div class='form-group'>
-			{!! html()->label('Kata Pengantar', 'kata_pengantar')->class('control-label')->for('kata_pengantar')->text('Kata Pengantar') !!}
+			{!! html()->label('Kata Pengantar', 'kata_pengantar')->class('control-label')->for('kata_pengantar') !!}
             <span class="text-danger">*</span>
 			{!! html()->textarea('kata_pengantar')->placeholder('Ketik disini')->class('form-control')->id('kata_pengantar')-> required() !!}
 		</div>
 		<div class='form-group'>
-			{!! html()->label('Sejarah Singkat', 'sejarah_singkat')->class('control-label')->for('sejarah_singkat')->text('Sejarah Singkat') !!}
+			{!! html()->label('Sejarah Singkat', 'sejarah_singkat')->class('control-label')->for('sejarah_singkat') !!}
             <span class="text-danger">*</span>
 			{!! html()->textarea('sejarah_singkat')->placeholder('Ketik Disini')->class('form-control')->id('sejarah_singkat')-> required() !!}
 		</div>
 		<div class='form-group'>
-			{!! html()->label('Visi dan Misi', 'visi_misi')->class('control-label')->for('visi_misi')->text('Visi dan Misi') !!}
+			{!! html()->label('Visi dan Misi', 'visi_misi')->class('control-label')->for('visi_misi') !!}
             <span class="text-danger">*</span>
 			{!! html()->textarea('visi_misi')->placeholder('Ketik Disini')->class('form-control')->id('visi_misi')-> required() !!}
 		</div>
 		<div class='form-group'>
-			{!! html()->label('Tugas dan Fungsi', 'tugas_fungsi')->class('control-label')->for('tugas_fungsi')->text('Tugas dan Fungsi') !!}
+			{!! html()->label('Tugas dan Fungsi', 'tugas_fungsi')->class('control-label')->for('tugas_fungsi') !!}
             <span class="text-danger">*</span>
 			{!! html()->textarea('tugas_fungsi')->placeholder('Ketik Disini')->class('form-control')->id('tugas_fungsi')-> required() !!}
 		</div>
 		<div class='form-group'>
-            {!! html()->label('Unggah Foto', 'file')->class('control-label') !!}
+            {!! html()->label('Unggah Gambar', 'file')->class('control-label') !!}
             <span class="text-danger">*</span>
             <span class="text-danger">Allowed : jpeg,png,jpg,svg</span><br>
             {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png,image/jpg,image/svg+xml,.svg')->required() !!}

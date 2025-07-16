@@ -2,11 +2,11 @@
     <div class="panel-body">
         <div class="row">
 			<div class="col-md-6">
-				<div class="form-group">
-					{!! html()->span()->text("Nama Pimpinan")->class("control-label") !!}
-					{!! html()->p($data->nama)->class("form-control") !!}
-				</div>
-			</div>
+                <div class="form-group">
+                    <label>Nama Pimpinan :</label>
+                    {{  $data->nama  }}
+                </div>
+            </div>
             <div>
 				<label>Foto Pimpinan</label>
                     @if(!is_null($data->file))
@@ -14,7 +14,7 @@
                                 <div class="form-group text-center">
 
                                                 @if($data->file->type == 'image')
-                                                    <img src="{!! url($data->file->link_stream) !!}" alt="{!! $data->file->name !!}" style="width: 80%; height: auto;" />
+                                                    <img src="{!! url($data->file->link_stream) !!}" alt="{!! $data->file->name !!}" style="width: 30%; height: auto;" />
                                                 @endif
 
                                 </div>

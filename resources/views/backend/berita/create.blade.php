@@ -2,23 +2,23 @@
 <div class="panel shadow-sm">
     <div class="panel-body">
         <div class='form-group'>
-			{!! html()->label('Judul Berita', 'judul')->class('control-label')->for('judul')->text('Judul Berita') !!}
+			{!! html()->label('Judul Berita', 'judul')->class('control-label')->for('judul') !!}
             <span class="text-danger">*</span>
 			{!! html()->text('judul')->placeholder('Ketik Disini')->class('form-control')->id('judul')->required() !!}
 		</div>
 		<div class='form-group'>
-			{!! html()->label('Deskripsi Berita', 'deskripsi')->class('control-label')->for('deskripsi')->text('Deskripsi Berita') !!}
+			{!! html()->label('Deskripsi Berita', 'deskripsi')->class('control-label')->for('deskripsi') !!}
             <span class="text-danger">*</span>
 			{!! html()->textarea('deskripsi')->placeholder('Ketik Disini')->class('form-control')->id('deskripsi')->required() !!}
 		</div>
         <div class='form-group'>
-            {!! html()->label('Gambar', 'file')->text('Unggah Gambar')->class('control-label') !!}
+            {!! html()->label('Unggah Gambar', 'file')->class('control-label') !!}
             <span class="text-danger">*</span>
             <span class="text-danger">Allowed : jpeg,png,jpg</span><br>
             {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png,image/jpg')->required() !!}
         </div>
 		<div class='form-group'>
-			{!! html()->label('Tanggal Berita', 'tanggal')->class('control-label')->for('tanggal')->text('Tanggal Berita') !!}
+			{!! html()->label('Tanggal Berita', 'tanggal')->class('control-label')->for('tanggal') !!}
             <span class="text-danger">*</span>
 			{!! html()->date('tanggal')->class('form-control')->id('tanggal')->required() !!}
 		</div>

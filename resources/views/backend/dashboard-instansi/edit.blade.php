@@ -2,8 +2,8 @@
 <div class="panel shadow-sm">
     <div class="panel-body">
         <div class='form-group'>
-			{!! html()->label('Nama Instansi', 'nama_instansi')->class('control-label')->for('nama_instansi')->text('Ubah Nama Instansi') !!}
-			{!! html()->text('nama_instansi',$data->nama_instansi)->placeholder('Ketik Disini')->class('form-control')->id('nama_instansi')->required() !!}
+			{!! html()->label('Ubah Nama Instansi', 'nama_instansi')->class('control-label')->for('nama_instansi') !!}
+			{!! html()->text('nama_instansi',$data->nama_instansi)->placeholder('Ketik Disini')->class('form-control')->id('nama_instansi') !!}
 		</div>
     </div>
 </div>
