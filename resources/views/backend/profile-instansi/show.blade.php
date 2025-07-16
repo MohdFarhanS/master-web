@@ -1,30 +1,30 @@
 <div class="panel shadow-sm">
     <div class="panel-body">
         <div class="row">
-			<div class="col-md-6">
-				<div class="form-group">
-					{!! html()->span()->text("Kata Pengantar")->class("control-label") !!}
-					{!! html()->p($data->kata_pengantar)->class("form-control") !!}
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="form-group">
-					{!! html()->span()->text("Sejarah Singkat")->class("control-label") !!}
-					{!! html()->p($data->sejarah_singkat)->class("form-control") !!}
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="form-group">
-					{!! html()->span()->text("Visi dan Misi")->class("control-label") !!}
-					{!! html()->p($data->visi_misi)->class("form-control") !!}
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="form-group">
-					{!! html()->span()->text("Tugas dan Fungsi")->class("control-label") !!}
-					{!! html()->p($data->tugas_fungsi)->class("form-control") !!}
-				</div>
-			</div>
+			<div class="col-md-12">
+                <div class="form-group">
+                    <label>Kata Pengantar :</label>
+                    {{  $data->kata_pengantar }}
+                </div>
+            </div>
+			<div class="col-md-12">
+                <div class="form-group">
+                    <label>Sejarah Singkat :</label>
+                    {{  $data->sejarah_singkat }}
+                </div>
+            </div>
+			<div class="col-md-12">
+                <div class="form-group">
+                    <label>Visi dan Misi :</label>
+                    {{  $data->visi_misi }}
+                </div>
+            </div>
+			<div class="col-md-12">
+                <div class="form-group">
+                    <label>Tugas dan Fungsi :</label>
+                    {{  $data->tugas_fungsi }}
+                </div>
+            </div>
 			<div>
 				<label>Struktur Organisasi</label>
                     @if(!is_null($data->file))

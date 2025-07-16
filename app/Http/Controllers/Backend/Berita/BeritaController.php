@@ -49,7 +49,7 @@ class BeritaController extends Controller
             'judul' => 'required',
 			'deskripsi' => 'required',
             'tanggal'   => 'required|date',
-            'file.*' => 'nullable|mimes:jpg,jpeg,png|max:2048',
+            'file' => 'required|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         if ($data=$this->model::create($request->all())) {
@@ -92,7 +92,7 @@ class BeritaController extends Controller
             'judul' => 'required',
 			'deskripsi' => 'required',
             'tanggal'   => 'required|date',
-            'file.*' => 'nullable|mimes:jpg,jpeg,png|max:2048',
+            'file' => 'required|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         $data=$this->model::find($id);

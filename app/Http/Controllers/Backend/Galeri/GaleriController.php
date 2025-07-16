@@ -48,10 +48,9 @@ class GaleriController extends Controller
     {
         $request->validate([
             'nama_kegiatan' => 'required',
-            'file.*' => 'nullable|mimes:jpg,jpeg,png|max:2048',
+            'file' => 'required|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-         // Tambahan
         if ($data=$this->model::create($request->all())) {
             if($request->hasFile('file')){
                 $data->file()->create([
@@ -90,7 +89,7 @@ class GaleriController extends Controller
     {
         $request->validate([
             'nama_kegiatan' => 'required',
-            'file.*' => 'nullable|mimes:jpg,jpeg,png|max:2048',
+            'file' => 'required|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         $data=$this->model::find($id);

@@ -2,19 +2,19 @@
 <div class="panel shadow-sm">
     <div class="panel-body">
         <div class='form-group'>
-			{!! html()->label('Kata Pengantar', 'kata_pengantar')->class('control-label')->for('kata_pengantar')->text('Kata Pengantar') !!}
+			{!! html()->label('Edit Kata Pengantar', 'kata_pengantar')->class('control-label')->for('kata_pengantar')->text('Edit Kata Pengantar') !!}
 			{!! html()->text('kata_pengantar',$data->kata_pengantar)->placeholder('Ketik Disini')->class('form-control')->id('kata_pengantar')->required() !!}
 		</div>
 		<div class='form-group'>
-			{!! html()->label('Sejarah Singkat', 'sejarah_singkat')->class('control-label')->for('sejarah_singkat')->text('Sejarah Singkat') !!}
+			{!! html()->label('Edit Sejarah Singkat', 'sejarah_singkat')->class('control-label')->for('sejarah_singkat')->text('Edit Sejarah Singkat') !!}
 			{!! html()->text('sejarah_singkat',$data->sejarah_singkat)->placeholder('Ketik Disini')->class('form-control')->id('sejarah_singkat')->required() !!}
 		</div>
 		<div class='form-group'>
-			{!! html()->label('Visi dan Misi', 'visi_misi')->class('control-label')->for('visi_misi')->text('Visi dan Misi') !!}
+			{!! html()->label('Edit Visi dan Misi', 'visi_misi')->class('control-label')->for('visi_misi')->text('Edit Visi dan Misi') !!}
 			{!! html()->text('visi_misi',$data->visi_misi)->placeholder('Ketik Disini')->class('form-control')->id('visi_misi')->required() !!}
 		</div>
 		<div class='form-group'>
-			{!! html()->label('Tugas dan Fungsi', 'tugas_fungsi')->class('control-label')->for('tugas_fungsi')->text('Tugas Fungsi') !!}
+			{!! html()->label('Edit Tugas dan Fungsi', 'tugas_fungsi')->class('control-label')->for('tugas_fungsi')->text('Tugas dan Fungsi') !!}
 			{!! html()->text('tugas_fungsi',$data->tugas_fungsi)->placeholder('Ketik Disini')->class('form-control')->id('tugas_fungsi')->required() !!}
 		</div>
     </div>
