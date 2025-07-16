@@ -3,13 +3,13 @@
         <div class="row">
 			<div class="col-md-6">
 				<div class="form-group">
-					{!! html()->span()->text("Judul Berita")->class("control-label") !!}
+					{!! html()->span()->text("Judul")->class("control-label") !!}
 					{!! html()->p($data->judul)->class("form-control") !!}
 				</div>
 			</div>
 			<div class="col-md-6">
 				<div class="form-group">
-					{!! html()->span()->text("Deskripsi Berita")->class("control-label") !!}
+					{!! html()->span()->text("Deskripsi")->class("control-label") !!}
 					{!! html()->p($data->deskripsi)->class("form-control") !!}
 				</div>
 			</div>
@@ -19,19 +19,11 @@
 					{!! html()->p($data->tanggal)->class("form-control") !!}
 				</div>
 			</div>
-			<div>
-				<label>Foto Berita</label>
-                    @if(!is_null($data->file))
-                            @if($data->file->exists())
-                                <div class="form-group text-center">
-
-                                @if($data->file->type == 'image')
-                                    <img src="{!! url($data->file->link_stream) !!}" alt="{!! $data->file->name !!}" style="width: 80%; height: auto;" />
-                                @endif
-
-                                </div>
-                            @endif
-            		@endif
+			<div class="col-md-6">
+				<div class="form-group">
+					{!! html()->span()->text("Pembuat Berita")->class("control-label") !!}
+					{!! html()->p($data->user->name ?? 'N/A')->class("form-control") !!}
+				</div>
 			</div>
 		</div>
     </div>

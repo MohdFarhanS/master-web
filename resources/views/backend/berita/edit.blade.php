@@ -2,16 +2,16 @@
 <div class="panel shadow-sm">
     <div class="panel-body">
         <div class='form-group'>
-			{!! html()->label('Judul Berita', 'judul')->class('control-label')->for('judul')->text('Ubah Judul Berita') !!}
-			{!! html()->textarea('judul',$data->judul)->class('form-control')->placeholder('Ketik Disini')->id('judul')->required() !!}
+			{!! html()->label()->class('control-label')->for('judul')->text('Judul') !!}
+			{!! html()->text('judul',$data->judul)->placeholder('Type Judul here')->class('form-control')->id('judul') !!}
 		</div>
 		<div class='form-group'>
-			{!! html()->label('Deskripsi', 'deskripsi')->class('control-label')->for('deskripsi')->text('Ubah Deskripsi') !!}
-			{!! html()->textarea('deskripsi',$data->deskripsi)->class('form-control')->placeholder('Ketik Disini')->id('deskripsi')->required() !!}
+			{!! html()->label()->class('control-label')->for('deskripsi')->text('Deskripsi') !!}
+			{!! html()->textarea('deskripsi',$data->deskripsi)->class('form-control')->id('deskripsi') !!}
 		</div>
 		<div class='form-group'>
-			{!! html()->label()->class('control-label')->for('tanggal')->text('Ubah Tanggal') !!}
-			{!! html()->date('tanggal',$data->tanggal)->class('form-control')->id('tanggal')->required() !!}
+			{!! html()->label()->class('control-label')->for('tanggal')->text('Tanggal') !!}
+			{!! html()->date('tanggal',$data->tanggal)->class('form-control')->id('tanggal') !!}
 		</div>
     </div>
 </div>
