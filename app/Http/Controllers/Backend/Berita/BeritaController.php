@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend\Berita;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Berita;
@@ -97,7 +98,21 @@ class BeritaController extends Controller
 
         $data=$this->model::find($id);
         if($data->update($request->all())){
-            $response=[ 'status'=>TRUE, 'message'=>'Data berhasil disimpan'];
+            if ($request->hasFile('file')) {
+                if ($data->file) {
+                    $data->file->forceDelete();
+                }
+                $data->file()->create([
+                    'data'=>[
+                        'disk'=>config('filesystems.default'),
+                        'target'=>Storage::putFile($data->folder, $request->file('file')),
+                        'name'=>$request->file('file')->getClientOriginalName(),
+                    ],
+                ]);
+            }
+            $response=[
+                'status'=>TRUE, 'message'=>'Data berhasil disimpan',
+            ];
         }
         return response()->json($response ?? ['status'=>FALSE, 'message'=>'Data gagal disimpan']);
     }

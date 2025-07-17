@@ -19,8 +19,8 @@
 		</div>
         <div class='form-group'>
             {!! html()->label('Unggah Struktur Organisasi')->text('Unggah Struktur Organisasi')->class('control-label') !!}
-            <span class="text-danger">Allowed : jpeg,png</span><br>
-            {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png') !!}
+            <span class="text-danger">Allowed : jpeg,png,jpg</span><br>
+            {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png,image/jpg') !!}
         </div>
     </div>
 </div>
