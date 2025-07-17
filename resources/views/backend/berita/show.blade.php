@@ -20,24 +20,25 @@
                     <label>Tanggal Berita :</label>
                     {{  date('d-m-Y', strtotime($data->tanggal)) }}
                 </div>
-                <div>
-                    <label>Gambar</label>
-                        @if(!is_null($data->file))
-                                @if($data->file->exists())
-                                    <div class="form-group text-center">
-                                    @if($data->file->type == 'image')
-                                        <img src="{!! url($data->file->link_stream) !!}" alt="{!! $data->file->name !!}" style="width: 80%; height: auto;" />
-                                    @endif
-                                    </div>
+            </div>
+            <div>
+                <label>Gambar</label>
+                    @if(!is_null($data->file))
+                            @if($data->file->exists())
+                                <div class="form-group text-center">
+                                @if($data->file->type == 'image')
+                                    <img src="{!! url($data->file->link_stream) !!}" alt="{!! $data->file->name !!}" style="width: 30%; height: auto;" />
                                 @endif
-                        @endif
+                                </div>
+                            @endif
+                    @endif
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Pembuat Berita :</label>
+                    {{  $data->user->name ?? 'N/A' }}
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Pembuat Berita :</label>
-                        {{  $data->user->name ?? 'N/A' }}
-                    </div>
-                </div>
+            </div>
             </div>
 		</div>
     </div>

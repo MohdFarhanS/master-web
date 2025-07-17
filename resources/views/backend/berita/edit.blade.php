@@ -9,6 +9,11 @@
 			{!! html()->label('Edit Deskripsi Berita', 'deskripsi')->class('control-label')->for('deskripsi') !!}
 			{!! html()->textarea('deskripsi',$data->deskripsi)->placeholder('Ketik Disini')->class('form-control')->id('deskripsi') !!}
 		</div>
+        <div class='form-group'>
+            {!! html()->label('Unggah Gambar')->text('Unggah Gambar')->class('control-label') !!}
+            <span class="text-danger">Allowed : jpeg,png,jpg</span><br>
+            {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png,image/jpg') !!}
+        </div>
 		<div class='form-group'>
 			{!! html()->label('Edit Tanggal', 'tanggal')->class('control-label')->for('tanggal') !!}
 			{!! html()->date('tanggal',$data->tanggal)->class('form-control')->id('tanggal') !!}

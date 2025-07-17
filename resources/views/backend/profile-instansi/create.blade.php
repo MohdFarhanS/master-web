@@ -24,8 +24,8 @@
 		<div class='form-group'>
             {!! html()->label('Unggah Gambar', 'file')->class('control-label') !!}
             <span class="text-danger">*</span>
-            <span class="text-danger">Allowed : jpeg,png,jpg,svg</span><br>
-            {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png,image/jpg,image/svg+xml,.svg')->required() !!}
+            <span class="text-danger">Allowed : jpeg,png,jpg</span><br>
+            {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png,image/jpg')->required() !!}
         </div>
     </div>
 </div>

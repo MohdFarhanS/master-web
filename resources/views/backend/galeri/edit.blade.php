@@ -5,6 +5,11 @@
 			{!! html()->label('Edit Nama Kegiatan', 'nama_kegiatan')->class('control-label')->for('nama_kegiatan') !!}
 			{!! html()->text('nama_kegiatan',$data->nama_kegiatan)->placeholder('Ketik Disini')->class('form-control')->id('nama_kegiatan') !!}
 		</div>
+        <div class='form-group'>
+            {!! html()->label('Unggah Gambar')->text('Unggah Gambar')->class('control-label') !!}
+            <span class="text-danger">Allowed : jpeg,png,jpg</span><br>
+            {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png,image/jpg') !!}
+        </div>
     </div>
 </div>
 {!! html()->hidden('table-id','datatable')->id('table-id') !!}

@@ -12,7 +12,7 @@
 			{!! html()->textarea('deskripsi')->placeholder('Ketik Disini')->class('form-control')->id('deskripsi')->required() !!}
 		</div>
         <div class='form-group'>
-            {!! html()->label('Unggah Gambar', 'file')->class('control-label') !!}
+            {!! html()->label('Unggah Gambar Struktur Organisasi', 'file')->class('control-label') !!}
             <span class="text-danger">*</span>
             <span class="text-danger">Allowed : jpeg,png,jpg</span><br>
             {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png,image/jpg')->required() !!}
