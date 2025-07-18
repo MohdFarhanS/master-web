@@ -4,7 +4,7 @@
         <div class='form-group'>
 			{!! html()->label('Nama Instansi', 'nama_instansi')->class('control-label')->for('nama_instansi') !!}
             <span class="text-danger">*</span>
-			{!! html()->text('nama_instansi',NULL)->placeholder('Ketik Disini')->class('form-control')->id('nama_instansi')->required() !!}
+			{!! html()->text('nama_instansi')->placeholder('Ketik Disini')->class('form-control')->id('nama_instansi')->required() !!}
 		</div>
         <div class='form-group'>
             {!! html()->label('Unggah Gambar', 'file')->class('control-label') !!}
