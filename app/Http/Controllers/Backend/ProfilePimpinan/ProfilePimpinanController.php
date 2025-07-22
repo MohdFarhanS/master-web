@@ -47,7 +47,7 @@ class ProfilePimpinanController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'file' => 'required|mimes:jpg,jpeg,png,svg|max:2048',
+            'file' => 'nullable|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         if ($data=$this->model::create($request->all())) {
@@ -88,7 +88,7 @@ class ProfilePimpinanController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'file' => 'required|mimes:jpg,jpeg,png,svg|max:2048',
+            'file' => 'nullable|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         $data=$this->model::find($id);

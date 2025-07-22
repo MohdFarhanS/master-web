@@ -12,11 +12,9 @@
                     @if(!is_null($data->file))
                             @if($data->file->exists())
                                 <div class="form-group text-center">
-
-                                                @if($data->file->type == 'image')
-                                                    <img src="{!! url($data->file->link_stream) !!}" alt="{!! $data->file->name !!}" style="width: 30%; height: auto;" />
-                                                @endif
-
+                                    @if($data->file->type == 'image')
+                                        <img src="{!! url($data->file->link_stream) !!}" alt="{!! $data->file->name !!}" style="width: 30%; height: auto;" />
+                                    @endif
                                 </div>
                             @endif
             		@endif

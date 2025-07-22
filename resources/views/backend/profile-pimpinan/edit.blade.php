@@ -7,8 +7,8 @@
 		</div>
         <div class='form-group'>
             {!! html()->label('Unggah Gambar')->text('Unggah Gambar')->class('control-label') !!}
-            <span class="text-danger">Allowed : jpeg,png,jpg,svg</span><br>
-            {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png,image/jpg,image/svg+xml,.svg') !!}
+            <span class="text-danger">Allowed : jpeg,png,jpg</span><br>
+            {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png,image/jpg') !!}
         </div>
     </div>
 </div>

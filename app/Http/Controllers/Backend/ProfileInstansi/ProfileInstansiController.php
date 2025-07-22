@@ -51,7 +51,7 @@ class ProfileInstansiController extends Controller
 			'sejarah_singkat' => 'required',
 			'visi_misi' => 'required',
 			'tugas_fungsi' => 'required',
-            'file' => 'required|mimes:jpeg,png,jpg|max:2048',
+            'file' => 'nullable|mimes:jpeg,png,jpg|max:2048',
         ]);
 
 
@@ -96,7 +96,7 @@ class ProfileInstansiController extends Controller
 			'sejarah_singkat' => 'required',
 			'visi_misi' => 'required',
 			'tugas_fungsi' => 'required',
-            'file' => 'required|mimes:jpeg,png,jpg|max:2048',
+            'file' => 'nullable|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         $data=$this->model::find($id);
