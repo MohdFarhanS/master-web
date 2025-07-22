@@ -44,6 +44,13 @@ Route::group(['prefix'=>config('mvc.route_prefix')], function () { // remove thi
 		});
 		Route::resource('kontak', 'Kontak\KontakController');
 		//end-kontak
+		//pengumuman
+		Route::prefix('pengumuman')->as('pengumuman')->group(function () {
+			Route::get('data', 'Pengumuman\PengumumanController@data');
+			Route::get('delete/{id}', 'Pengumuman\PengumumanController@delete');
+		});
+		Route::resource('pengumuman', 'Pengumuman\PengumumanController');
+		//end-pengumuman
 		//{{route replacer}} DON'T REMOVE THIS LINE
     });
 });

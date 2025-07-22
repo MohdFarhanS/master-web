@@ -2,13 +2,21 @@
 <div class="panel shadow-sm">
     <div class="panel-body">
         <div class='form-group'>
-			{!! html()->label('Edit Nama Pimpinan', 'nama')->class('control-label')->for('nama') !!}
-			{!! html()->text('nama',$data->nama)->placeholder('Ketik Disini')->class('form-control')->id('nama') !!}
+			{!! html()->label('Judul', 'judul')->class('control-label')->for('judul') !!}
+			{!! html()->text('judul',$data->judul)->placeholder('Ketik Disini')->class('form-control')->id('judul') !!}
+		</div>
+		<div class='form-group'>
+			{!! html()->label('Deskripsi', 'deskripsi')->class('control-label')->for('deskripsi') !!}
+			{!! html()->textarea('deskripsi',$data->deskripsi)->class('form-control')->id('deskripsi') !!}
 		</div>
         <div class='form-group'>
             {!! html()->label('Unggah Gambar')->text('Unggah Gambar')->class('control-label') !!}
-            <span class="text-danger">Allowed : jpeg,png,jpg</span><br>
-            {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png,image/jpg') !!}
+            <span class="text-danger">Allowed : jpeg,png,jpg,pdf</span><br>
+            {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png,image/jpg,.pdf') !!}
+        </div>
+        <div class='form-group'>
+            {!! html()->checkbox('tampilkan',$data->publish,1)->id('md_checkbox')->class('filled-in chk-col-primary') !!}
+            {!! html()->label('Tampilkan Pengumuman','md_checkbox')->class('control-label') !!}
         </div>
     </div>
 </div>

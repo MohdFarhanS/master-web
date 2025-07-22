@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Backend\ProfileInstansi;
+namespace App\Http\Controllers\Backend\Pengumuman;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use App\Models\ProfileInstansi;
+use App\Models\Pengumuman;
 
-class ProfileInstansiController extends Controller
+class PengumumanController extends Controller
 {
     public function index()
     {
@@ -47,13 +47,11 @@ class ProfileInstansiController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kata_pengantar' => 'required',
-			'sejarah_singkat' => 'required',
-			'visi_misi' => 'required',
-			'tugas_fungsi' => 'required',
-            'file' => 'nullable|mimes:jpeg,png,jpg|max:2048',
+            'judul' => 'required',
+			'deskripsi' => 'required',
+            'tampilkan' => 'nullable|boolean',
+            'file' => 'nullable|mimes:jpeg,png,jpg,pdf|max:2048',
         ]);
-
 
         if ($data=$this->model::create($request->all())) {
             if($request->hasFile('file')){
@@ -74,7 +72,7 @@ class ProfileInstansiController extends Controller
                 'status'=>FALSE, 'message'=>'Data gagal disimpan',
             ];
         }
-        return response()->json($response);
+        return response()->json($response ?? ['status'=>FALSE, 'message'=>'Data gagal disimpan']);
     }
 
     public function show($id)
@@ -92,13 +90,13 @@ class ProfileInstansiController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'kata_pengantar' => 'required',
-			'sejarah_singkat' => 'required',
-			'visi_misi' => 'required',
-			'tugas_fungsi' => 'required',
-            'file' => 'nullable|mimes:jpeg,png,jpg|max:2048',
+            'judul' => 'required',
+			'deskripsi' => 'required',
+            'tampilkan' => 'nullable|boolean',
+            'file' => 'nullable|mimes:jpeg,png,jpg,pdf|max:2048',
         ]);
 
+        $request->has('tampilkan') ? $request->merge(['tampilkan' => 1]) : $request->merge(['tampilkan' => 0]);
         $data=$this->model::find($id);
         if($data->update($request->all())){
             if ($request->hasFile('file')) {
@@ -134,5 +132,6 @@ class ProfileInstansiController extends Controller
         }
         return response()->json($response ?? ['status'=>FALSE, 'message'=>'Data gagal dihapus']);
     }
-}
 
+    
+}
