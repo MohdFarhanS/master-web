@@ -44,7 +44,7 @@ class KontakController extends Controller
     {
         $request->validate([
             'alamat' => 'required',
-			'telp' => 'required',
+			'telp' => 'required|numeric',
 			'email' => 'required|email',
         ], [
             'email.required' => 'Email wajib diisi.',
@@ -73,8 +73,10 @@ class KontakController extends Controller
     {
         $request->validate([
             'alamat' => 'required',
-			'telp' => 'required',
-			'email' => 'required',
+			'telp' => 'required|numeric',
+			'email' => 'required|email',
+        ], [
+            'email.email' => 'Format email tidak valid. Harus mengandung "@" dan domain.',
         ]);
 
         $data=$this->model::find($id);

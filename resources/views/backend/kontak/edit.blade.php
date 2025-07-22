@@ -3,11 +3,11 @@
     <div class="panel-body">
         <div class='form-group'>
 			{!! html()->label()->class('control-label')->for('alamat')->text('Alamat') !!}
-			{!! html()->text('alamat',$data->alamat)->placeholder('Type Alamat here')->class('form-control')->id('alamat') !!}
+			{!! html()->text('alamat',$data->alamat)->placeholder('Ketik Disini')->class('form-control')->id('alamat') !!}
 		</div>
 		<div class='form-group'>
 			{!! html()->label()->class('control-label')->for('telp')->text('Telp') !!}
-			{!! html()->number('telp',$data->telp)->placeholder('Type Telp here')->class('form-control')->id('telp') !!}
+			{!! html()->number('telp',$data->telp)->placeholder('Ketik Disini')->class('form-control')->id('telp') !!}
 		</div>
 		<div class='form-group'>
 			{!! html()->label()->class('control-label')->for('email')->text('Email') !!}

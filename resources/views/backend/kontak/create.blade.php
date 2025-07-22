@@ -9,7 +9,7 @@
 		<div class='form-group'>
 			{!! html()->label('Telepon', 'telp')->class('control-label')->for('telp') !!}
             <span class="text-danger">*</span>
-			{!! html()->text('telp')->placeholder('Ketik Disini')->class('form-control')->id('telp')->required() !!}
+			{!! html()->input('number','telp')->placeholder('123456789')->class('form-control')->id('telp')->required() !!}
 		</div>
 		<div class='form-group'>
 			{!! html()->label('Email', 'email')->class('control-label')->for('email') !!}
