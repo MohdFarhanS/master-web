@@ -37,6 +37,13 @@ Route::group(['prefix'=>config('mvc.route_prefix')], function () { // remove thi
 		});
 		Route::resource('galeri', 'Galeri\GaleriController');
 		//end-galeri
+		//kontak
+		Route::prefix('kontak')->as('kontak')->group(function () {
+			Route::get('data', 'Kontak\KontakController@data');
+			Route::get('delete/{id}', 'Kontak\KontakController@delete');
+		});
+		Route::resource('kontak', 'Kontak\KontakController');
+		//end-kontak
 		//pengumuman
 		Route::prefix('pengumuman')->as('pengumuman')->group(function () {
 			Route::get('data', 'Pengumuman\PengumumanController@data');
