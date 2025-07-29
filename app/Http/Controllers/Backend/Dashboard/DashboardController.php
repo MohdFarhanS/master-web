@@ -11,4 +11,3 @@ class DashboardController extends Controller
         return view($this->view . '.index');
     }
 }
-

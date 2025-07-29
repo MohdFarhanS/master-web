@@ -4,8 +4,13 @@ use App\Http\Controllers\jsController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
+Route::prefix('js')->as('js')->group(function () {
+    Route::any('/{layout}/{page}/{file}', [jsController::class, 'javaScript']);
+});
+
 use App\Http\Controllers\Frontend\FrontendController;
 
+Route::get('/', fn() => redirect()->route('login'));
 
 Route::get('/', [FrontendController::class, 'dashboard'])->name('dashboard');
 Route::get('/dashboard', [FrontendController::class, 'dashboard'])->name('dashboard.page');
@@ -15,7 +20,7 @@ Route::get('/profile/pimpinan', [FrontendController::class, 'pimpinan'])->name('
 // Profil Pimpinan (Frontend)
 Route::get('/profil-pimpinan', [App\Http\Controllers\Frontend\FrontendController::class, 'pimpinan'])->name('profil.pimpinan');
 // Profil Instansi
-Route::get('/profile/instansi', [FrontendController::class, 'instansi'])->name('profile.instansi');
+Route::get('/profile/instansi', [App\Http\Controllers\Frontend\FrontendController::class, 'instansi'])->name('profile.instansi');
 // Profil Struktur
 Route::get('/profile/struktur', [FrontendController::class, 'struktur'])->name('struktur');
 
