@@ -1,4 +1,3 @@
-
 <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top shadow-sm py-2" style="transition:background 0.3s;z-index:1055;">
   <div class="container-fluid">
     <a class="navbar-brand fw-bold d-flex align-items-center" href="/dashboard">
@@ -13,7 +12,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto align-items-lg-cente
+      <ul class="navbar-nav ms-auto align-items-lg-center">
         <li class="nav-item"><a class="nav-link" href="/dashboard">Dashboard</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Profile</a>
@@ -25,7 +24,7 @@
         </li>
         <li class="nav-item"><a class="nav-link" href="/berita">Berita</a></li>
         <li class="nav-item"><a class="nav-link" href="/galeri">Galeri</a></li>
-        <li class="nav-item"><a class="nav-link" href="/kontak">Kontak</a></li>
+        <li class="nav-item"><a class="nav-link" href="/kontak"><i class="fas fa-phone-alt me-2" style="transform: scaleX(-1);"></i>Kontak</a></li>
       </ul>
     </div>
   </div>

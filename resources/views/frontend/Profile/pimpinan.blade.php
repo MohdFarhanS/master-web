@@ -1,20 +1,25 @@
 @extends('layouts.app')
 @section('content')
 <style>
-.pimpinan-section-title {
-  font-size: 2rem;
+.pimpinan-header-bg {
+  background: #fdf4f5;
+  padding: 60px 0 32px 0;
+  margin-bottom: 0;
+  text-align: center;
+}
+.pimpinan-header-title {
+  font-size: 2.4rem;
   font-weight: 700;
-  color: #222;
-  margin-bottom: 24px;
-  letter-spacing: 1px;
-  border-bottom: 1.5px solid #eaeaea;
-  padding-bottom: 10px;
+  color: #232323;
+  letter-spacing: 2px;
+  margin: 0;
+  line-height: 1.1;
 }
 .pimpinan-card {
-  background: #fcfcfd;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-  padding: 32px 18px 24px 18px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  padding: 36px 24px 32px 24px;
   margin-bottom: 32px;
   border: 1.5px solid #f3f3f3;
   text-align: center;
@@ -32,9 +37,9 @@
   object-fit: contain;
 }
 .pimpinan-name {
-  font-size: 2rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  color: #222;
+  color: #232323;
   text-align: center;
   margin-top: 18px;
   margin-bottom: 0;
@@ -46,22 +51,48 @@
   text-align: center;
   margin: 32px 0;
 }
+.sidebar-post {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+.sidebar-thumb {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.sidebar-post-title {
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: #232323;
+  margin-bottom: 2px;
+  text-decoration: none;
+  display: block;
+}
+.sidebar-post-date {
+  color: #888;
+  font-size: 0.92rem;
+}
 </style>
+<div class="pimpinan-header-bg">
+  <div class="pimpinan-header-title">PROFIL PIMPINAN</div>
+</div>
 <section class="container py-5">
-  <h2 class="pimpinan-section-title">Profil Pimpinan</h2>
   <div class="row justify-content-center">
-    <div class="col-lg-5 col-md-7 col-12">
+    <div class="col-lg-8">
       <div class="pimpinan-card">
+        <div class="fw-bold mb-3 text-start" style="font-size:1.1rem;">Profile Pimpinan</div>
         @if(isset($profilePimpinan) && count($profilePimpinan))
             @foreach($profilePimpinan as $pimpinan)
                 <img src="{{ $pimpinan->file->link_stream ?? '' }}" alt="Foto Pimpinan" class="pimpinan-img">
-                <div class="pimpinan-name">{{ $pimpinan->nama ?? '-' }}</div>
+                <div class="pimpinan-name mt-3">{{ $pimpinan->nama ?? '-' }}</div>
             @endforeach
         @else
             <div class="pimpinan-empty">Belum ada data pimpinan.</div>
         @endif
       </div>
-    </div>
-  </div>
 </section>
 @endsection
