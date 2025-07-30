@@ -284,15 +284,5 @@
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.728282019839!2d101.45582153528665!3d0.523317600930215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5ade64f297b57%3A0x2ee541838c361bba!2sBadan%20Riset%20dan%20Inovasi%20Daerah%20(BRIDA)%20Provinsi%20Riau!5e0!3m2!1sid!2sid!4v1753763766945!5m2!1sid!2sid" width="100%" height="420" style="border:0;min-width:320px;max-width:100vw;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
 
-    <!-- Profil Instansi Section -->
-    <div class="dashboard-section-title">PROFIL INSTANSI</div>
-    <div class="dashboard-profil-instansi mb-4">I. 
-        @if(isset($profilInstansi) && is_object($profilInstansi))
-            <h3>{{ $profilInstansi->judul ?? 'Profil Instansi' }}</h3>
-            <p>{{ $profilInstansi->deskripsi ?? 'Deskripsi instansi belum tersedia.' }}</p>
-        @else
-            <p class="text-muted">Belum ada profil instansi.</p>
-        @endif
-    </div>
 </section>
 @endsection

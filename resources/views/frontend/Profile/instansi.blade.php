@@ -5,40 +5,22 @@
   <div class="row justify-content-center">
     <div class="col-lg-10">
       <div class="p-4 mb-4 bg-white shadow-sm rounded">
-        @if(isset($profilInstansi) && is_object($profilInstansi))
+        @if(isset($profileInstansi) && is_object($profileInstansi))
           <div class="mb-4">
             <h4>Kata Pengantar</h4>
-            <p>{!! nl2br(e($profilInstansi->kata_pengantar ?? '-')) !!}</p>
+            <p>{!! nl2br(e(trim($profileInstansi->kata_pengantar) !== '' ? $profileInstansi->kata_pengantar : '-')) !!}</p>
           </div>
           <div class="mb-4">
             <h4>Sejarah Singkat</h4>
-            <p>{!! nl2br(e($profilInstansi->sejarah ?? '-')) !!}</p>
+            <p>{!! nl2br(e(trim($profileInstansi->sejarah_singkat) !== '' ? $profileInstansi->sejarah_singkat : '-')) !!}</p>
           </div>
           <div class="mb-4">
-            <h4>Visi & Misi</h4>
-            <p><strong>Visi:</strong> {!! nl2br(e($profilInstansi->visi ?? '-')) !!}</p>
-            <p><strong>Misi:</strong></p>
-            <ul>
-              @if(!empty($profilInstansi->misi))
-                @foreach(explode("\n", $profilInstansi->misi) as $misi)
-                  <li>{{ $misi }}</li>
-                @endforeach
-              @else
-                <li>-</li>
-              @endif
-            </ul>
+            <h4>Visi&Misi</h4>
+            <p>{!! nl2br(e(trim($profileInstansi->sejarah_singkat) !== '' ? $profileInstansi->sejarah_singkat : '-')) !!}</p>
           </div>
           <div class="mb-4">
             <h4>Tugas dan Fungsi</h4>
-            <p>{!! nl2br(e($profilInstansi->tugas_fungsi ?? '-')) !!}</p>
-          </div>
-          <div class="mb-4">
-            <h4>Struktur Organisasi</h4>
-            @if(!empty($profilInstansi->struktur_organisasi))
-              <img src="{{ $profilInstansi->struktur_organisasi }}" alt="Struktur Organisasi" class="img-fluid">
-            @else
-              <div class="text-muted">Belum ada gambar struktur organisasi.</div>
-            @endif
+            <p>{!! nl2br(e(trim($profileInstansi->tugas_fungsi) !== '' ? $profileInstansi->tugas_fungsi : '-')) !!}</p>
           </div>
         @else
           <div class="text-muted">Belum ada data profil instansi.</div>
@@ -47,5 +29,4 @@
     </div>
   </div>
 </section>
-
 @endsection

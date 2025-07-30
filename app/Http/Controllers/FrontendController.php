@@ -61,7 +61,7 @@ class FrontendController extends Controller
     public function struktur()
     {
         return view('frontend.Profile.struktur', [
-            'struktur' => ProfileInstansi::with('strukturFile')->first()
+            'profileInstansi' => ProfileInstansi::with('file')->first()
         ]);
     }
 

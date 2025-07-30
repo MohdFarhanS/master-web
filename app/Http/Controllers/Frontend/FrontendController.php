@@ -18,7 +18,7 @@ class FrontendController extends Controller
         $profileInstansi = ProfileInstansi::with('file')->first();
         $profilePimpinan = ProfilePimpinan::with('file')->get();
         $beritaTerbaru = Berita::with('file')->latest()->take(5)->get();
-        $galeri = Galeri::with('file')->latest()->take(6)->get();
+        $galeri = Galeri::with('file')->latest()->get();
         $pengumuman = Pengumuman::latest()->take(5)->get();
         $kontak = Kontak::first();
         $banner = null;
@@ -62,8 +62,8 @@ class FrontendController extends Controller
     }
     // Tampilkan struktur organisasi
     public function struktur() {
-        $struktur = ProfileInstansi::with('strukturFile')->first();
-        return view('frontend.Profile.struktur', compact('struktur'));
+        $profileInstansi = ProfileInstansi::with('file')->first();
+        return view('frontend.Profile.struktur', compact('profileInstansi'));
     }
     // Tampilkan daftar berita
     public function berita() {

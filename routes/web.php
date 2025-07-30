@@ -7,7 +7,6 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::prefix('js')->as('js')->group(function () {
     Route::any('/{layout}/{page}/{file}', [jsController::class, 'javaScript']);
 });
-
 use App\Http\Controllers\Frontend\FrontendController;
 
 Route::get('/', fn() => redirect()->route('login'));
@@ -20,9 +19,15 @@ Route::get('/profile/pimpinan', [FrontendController::class, 'pimpinan'])->name('
 // Profil Pimpinan (Frontend)
 Route::get('/profil-pimpinan', [App\Http\Controllers\Frontend\FrontendController::class, 'pimpinan'])->name('profil.pimpinan');
 // Profil Instansi
-Route::get('/profile/instansi', [App\Http\Controllers\Frontend\FrontendController::class, 'instansi'])->name('profile.instansi');
+Route::get('/profile/instansi', [FrontendController::class, 'instansi'])->name('profile.instansi');
+// Profil Instansi (tambahan agar /profil-instansi juga bisa diakses)
+Route::get('/profil-instansi', [FrontendController::class, 'instansi']);
 // Profil Struktur
 Route::get('/profile/struktur', [FrontendController::class, 'struktur'])->name('struktur');
+// Profil Struktur (tambahan agar /profil-struktur juga bisa diakses)  
+Route::get('/profil-struktur', [FrontendController::class, 'struktur']); 
+// Profil Struktur (tambahan agar /struktur-organisasi juga bisa diakses)
+Route::get('/struktur-organisasi', [FrontendController::class, 'struktur']);
 
 // Berita
 Route::get('/berita', [FrontendController::class, 'berita'])->name('berita');
@@ -37,6 +42,7 @@ Route::get('/pengumuman/{id}', [FrontendController::class, 'pengumumanDetail'])-
 
 // Kontak
 Route::get('/kontak', [FrontendController::class, 'kontak'])->name('kontak');
+
 
 // Route backend tetap
 Route::get('login', 'Backend\Auth\AuthController@formLogin')->name('login');
