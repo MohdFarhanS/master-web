@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('galeris', function (Blueprint $table) {
             $table->uuid("id")->primary();
 			$table->string("nama_kegiatan")->nullable();
+            $table->string('bg_color', 7)->nullable();
 			$table->timestamps();
 			$table->softDeletes();
         });

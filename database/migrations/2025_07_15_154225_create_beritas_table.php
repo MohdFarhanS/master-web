@@ -18,6 +18,7 @@ return new class extends Migration
 			$table->text("judul")->nullable();
 			$table->longText("deskripsi")->nullable();
 			$table->date("tanggal")->nullable();
+            $table->string('bg_color', 7)->nullable();
 			$table->foreignUuid("user_id")->constrained()->nullable();
 			$table->timestamps();
 			$table->softDeletes();

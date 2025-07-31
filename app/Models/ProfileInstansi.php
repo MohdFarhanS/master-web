@@ -12,7 +12,7 @@ class ProfileInstansi extends Model
 {
     use HasFactory, HasUuids, SoftDeletes;
 
-    protected $fillable = ['id','kata_pengantar','sejarah_singkat','visi_misi','tugas_fungsi'];
+    protected $fillable = ['id','kata_pengantar','sejarah_singkat','visi_misi','tugas_fungsi','bg_color'];
     protected $casts = [];
     protected $table = 'profile_instansis';
 
