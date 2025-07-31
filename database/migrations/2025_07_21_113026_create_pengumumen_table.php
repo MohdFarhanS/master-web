@@ -18,6 +18,7 @@ return new class extends Migration
 			$table->string("judul")->nullable();
 			$table->text("deskripsi")->nullable();
             $table->boolean("tampilkan")->nullable();
+            $table->string('bg_color', 7)->nullable();
 			$table->timestamps();
 			$table->softDeletes();
         });

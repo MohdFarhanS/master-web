@@ -19,6 +19,7 @@ return new class extends Migration
 			$table->text("sejarah_singkat")->nullable();
 			$table->text("visi_misi")->nullable();
 			$table->text("tugas_fungsi")->nullable();
+            $table->string('bg_color', 7)->nullable();
 			$table->timestamps();
 			$table->softDeletes();
         });

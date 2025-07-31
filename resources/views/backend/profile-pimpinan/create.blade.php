@@ -12,6 +12,10 @@
             <span class="text-danger">Allowed : jpeg,png,jpg</span><br>
             {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png,image/jpg')->required() !!}
         </div>
+        <div class='form-group'>
+            {!! html()->label('Warna Latar Belakang Item', 'bg_color')->class('control-label')->for('bg_color') !!}
+            <input type="color" class="form-control form-control-color" id="bg_color" name="bg_color" value="#007BFF">
+        </div>
     </div>
 </div>
 {!! html()->hidden('table-id','datatable')->id('table-id') !!}
@@ -27,9 +31,23 @@
     .modal-lg {
         max-width: 1000px !important;
     }
+
+    .form-control-color {
+        height: calc(1.5em + .75rem + 2px); 
+        padding: .375rem .75rem;
+    }
 </style>
 <script>
     $('.select2').select2();
     $('.modal-title').html('<i class="fa fa-plus-circle"></i> Tambah Data {!! $page->title !!}');
     $('.submit-data').html('<i class="fa fa-save"></i> Simpan Data');
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const colorInput = document.getElementById('bg_color');
+        if (colorInput) {
+            if (!colorInput.value) { 
+                colorInput.value = '#FFFFFF';
+            }
+        }
+    });
 </script>

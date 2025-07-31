@@ -12,7 +12,7 @@ class Galeri extends Model
 {
     use HasFactory, HasUuids, SoftDeletes;
 
-    protected $fillable = ['id','nama_kegiatan'];
+    protected $fillable = ['id','nama_kegiatan','bg_color'];
     protected $casts = [];
     protected $table = 'galeris';
 

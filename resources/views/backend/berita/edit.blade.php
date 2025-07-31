@@ -18,6 +18,10 @@
 			{!! html()->label('Edit Tanggal', 'tanggal')->class('control-label')->for('tanggal') !!}
 			{!! html()->date('tanggal',$data->tanggal)->class('form-control')->id('tanggal') !!}
 		</div>
+        <div class='form-group'>
+            {!! html()->label('Warna Latar Belakang Item', 'bg_color')->class('control-label')->for('bg_color') !!}
+            <input type="color" class="form-control form-control-color" id="bg_color" name="bg_color" value="{{ old('bg_color', $data->bg_color ?? '#FFFFFF') }}">
+        </div>
     </div>
 </div>
 {!! html()->hidden('table-id','datatable')->id('table-id') !!}
@@ -32,6 +36,11 @@
 
     .modal-lg {
         max-width: 1000px !important;
+    }
+
+    .form-control-color {
+        height: calc(1.5em + .75rem + 2px);
+        padding: .375rem .75rem;
     }
 </style>
 <script>

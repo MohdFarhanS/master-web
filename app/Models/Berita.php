@@ -12,7 +12,7 @@ class Berita extends Model
 {
     use HasFactory, HasUuids, SoftDeletes;
 
-    protected $fillable = ['id','judul','deskripsi','tanggal','user_id'];
+    protected $fillable = ['id','judul','deskripsi','tanggal','bg_color','user_id'];
     protected $casts = [];
     protected $table = 'beritas';
 

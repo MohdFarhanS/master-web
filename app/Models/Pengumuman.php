@@ -13,7 +13,7 @@ class Pengumuman extends Model
 {
     use HasFactory, HasUuids, SoftDeletes;
 
-    protected $fillable = ['id','judul','deskripsi', 'tampilkan'];
+    protected $fillable = ['id','judul','deskripsi', 'tampilkan','bg_color'];
     protected $casts = [
         'tampilkan' => 'boolean',
     ];

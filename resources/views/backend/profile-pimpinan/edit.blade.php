@@ -10,6 +10,10 @@
             <span class="text-danger">Allowed : jpeg,png,jpg</span><br>
             {!! html()->file('file')->class('form-control')->id('file')->accept('image/jpeg,image/png,image/jpg') !!}
         </div>
+        <div class='form-group'>
+            {!! html()->label('Warna Latar Belakang Item', 'bg_color')->class('control-label')->for('bg_color') !!}
+            <input type="color" class="form-control form-control-color" id="bg_color" name="bg_color" value="{{ old('bg_color', $data->bg_color ?? '#FFFFFF') }}">
+        </div>
     </div>
 </div>
 {!! html()->hidden('table-id','datatable')->id('table-id') !!}
@@ -25,9 +29,13 @@
     .modal-lg {
         max-width: 1000px !important;
     }
+
+    .form-control-color {
+        height: calc(1.5em + .75rem + 2px);
+        padding: .375rem .75rem;
+    }
 </style>
 <script>
     $('.select2').select2();
     $('.modal-title').html('<i class="fa fa-edit"></i> Edit Data {!! $page->title !!}');
     $('.submit-data').html('<i class="fa fa-save"></i> Simpan Data');
-</script>

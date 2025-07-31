@@ -11,7 +11,7 @@
             @if(isset($berita->file) && isset($berita->file->link_stream))
               <img src="{{ $berita->file->link_stream }}" class="card-img-top" alt="Gambar Berita" style="object-fit:cover;max-height:320px;">
             @endif
-            <span class="badge bg-danger position-absolute" style="left:16px;bottom:16px;font-size:1rem;">{{ isset($berita->created_at) ? $berita->created_at->format('d M') : '-' }}</span>
+            <span class="badge bg-danger position-absolute" style="left:16px;bottom:16px;font-size:1rem; background-color: {{ $berita->bg_color }} !important;">{{ isset($berita->created_at) ? $berita->created_at->format('d M') : '-' }}</span>
           </div>
           <div class="card-body">
             <h5 class="card-title">{{ $berita->judul ?? $berita->title ?? '-' }}</h5>

@@ -12,7 +12,7 @@ class ProfilePimpinan extends Model
 {
     use HasFactory, HasUuids, SoftDeletes;
 
-    protected $fillable = ['id','nama'];
+    protected $fillable = ['id','nama','bg_color'];
     protected $casts = [];
     protected $table = 'profile_pimpinans';
 
