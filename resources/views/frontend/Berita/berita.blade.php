@@ -107,11 +107,10 @@
               <img src="/img/berita-default.jpg" class="berita-img" alt="Berita">
             @endif
             @if(isset($berita->created_at))
-              <div class="berita-date">
-                {{ $berita->created_at->format('d') }}<br><span style="font-size:1rem;font-weight:400;">{{ $berita->created_at->format('M') }}</span>
+              <div class="berita-date" style="background-color: {{ $berita->bg_color }}">
+                {{ $berita->created_at->format('d') }}<br><span style="font-size:1rem;font-weight:400; ">{{ $berita->created_at->format('M') }}</span>
               </div>
             @endif
-            <span class="badge bg-danger position-absolute" style="left:16px;bottom:16px;font-size:1rem; background-color: {{ $berita->bg_color }} !important;">{{ isset($berita->created_at) ? $berita->created_at->format('d M') : '-' }}</span>
           </div>
           <div class="p-4">
             <div class="berita-title">{{ $berita->judul ?? '-' }}</div>
