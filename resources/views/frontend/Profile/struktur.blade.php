@@ -1,6 +1,20 @@
 @extends('layouts.app')
 @section('content')
 <style>
+.struktur-header-bg {
+  background: #fdf4f5;
+  padding: 60px 0 32px 0;
+  margin-bottom: 0;
+  text-align: center;
+}
+.struktur-header-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #232323;
+  letter-spacing: 2px;
+  margin: 0;
+  line-height: 1.1;
+}
 .struktur-section-title {
   font-size: 2.2rem;
   font-weight: 800;
@@ -42,8 +56,10 @@
   margin: 32px 0;
 }
 </style>
+<div class="struktur-header-bg">
+  <div class="struktur-header-title">STRUKTUR ORGANISASI</div>
+</div>
 <section class="container py-5">
-  <h2 class="struktur-section-title text-center">STRUKTUR ORGANISASI</h2>
   <div class="row justify-content-center">
     <div class="col-lg-10">
       <div class="struktur-card">
