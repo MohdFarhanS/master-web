@@ -29,7 +29,7 @@
 .instansi-section-title {
   font-size: 2.2rem;
   font-weight: 800;
-  color: #ff7300;
+  color: #0d6efd;
   letter-spacing: 2px;
   margin-bottom: 32px;
   text-shadow: 1px 1px 0 #fff;
@@ -51,20 +51,26 @@
         @if(isset($profileInstansi) && is_object($profileInstansi))
           <div class="mb-4">
             <h4>Kata Pengantar</h4>
-            <p>{!! nl2br(e(trim($profileInstansi->kata_pengantar) !== '' ? $profileInstansi->kata_pengantar : '-')) !!}</p>
+            <p>{!! nl2br(e(!empty(trim($profileInstansi->kata_pengantar ?? '')) ? $profileInstansi->kata_pengantar : '-')) !!}</p>
           </div>
           <div class="mb-4">
             <h4>Sejarah Singkat</h4>
-            <p>{!! nl2br(e(trim($profileInstansi->sejarah_singkat) !== '' ? $profileInstansi->sejarah_singkat : '-')) !!}</p>
+            <p>{!! nl2br(e(!empty(trim($profileInstansi->sejarah_singkat ?? '')) ? $profileInstansi->sejarah_singkat : '-')) !!}</p>
           </div>
           <div class="mb-4">
             <h4>Visi & Misi</h4>
-            <p>{!! nl2br(e(trim($profileInstansi->visi_misi) !== '' ? $profileInstansi->visi_misi : '-')) !!}</p>
+            <p>{!! nl2br(e(!empty(trim($profileInstansi->visi_misi ?? '')) ? $profileInstansi->visi_misi : '-')) !!}</p>
           </div>
           <div class="mb-4">
             <h4>Tugas dan Fungsi</h4>
-            <p>{!! nl2br(e(trim($profileInstansi->tugas_fungsi) !== '' ? $profileInstansi->tugas_fungsi : '-')) !!}</p>
+            <p>{!! nl2br(e(!empty(trim($profileInstansi->tugas_fungsi ?? '')) ? $profileInstansi->tugas_fungsi : '-')) !!}</p>
           </div>
+          @if(isset($profileInstansi->file) && is_object($profileInstansi->file) && isset($profileInstansi->file->link_stream))
+            <div class="mb-4">
+              <h4>Struktur Organisasi</h4>
+              <img src="{{ $profileInstansi->file->link_stream }}" alt="Struktur Organisasi" class="img-fluid" style="border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.1);">
+            </div>
+          @endif
         @else
           <div class="instansi-empty">Belum ada data profil instansi.</div>
         @endif

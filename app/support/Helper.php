@@ -16,18 +16,18 @@ class Helper
     }
 
     /**
-     * @param $extension array //type file yang akan ditampilkan
-     * @return array
+     * Ambil daftar nama file pada path tertentu dengan filter ekstensi.
+     * @param string $path Path direktori file
+     * @param array $extension Daftar ekstensi file yang diizinkan (misal: ['jpg','png'])
+     * @return array Daftar nama file tanpa ekstensi sebagai key dan value
      */
     public static function listFile($path, $extension): array
     {
-        $model=[];
-        foreach (File::files($path) as $files) {
-            if (in_array($files->getExtension(), $extension)) {
-                foreach ($extension as $ext) {
-                    $name=Arr::first(explode('.', $files->getFilename()));
-                    $model[$name]=$name;
-                }
+        $model = [];
+        foreach (File::files($path) as $file) {
+            if (in_array($file->getExtension(), $extension)) {
+                $name = pathinfo($file->getFilename(), PATHINFO_FILENAME);
+                $model[$name] = $name;
             }
         }
         return $model;

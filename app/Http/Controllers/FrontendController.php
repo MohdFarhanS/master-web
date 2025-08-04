@@ -39,7 +39,7 @@ class FrontendController extends Controller
 
     public function pengumumanDetail($id)
     {
-        $item = Pengumuman::findOrFail($id);
+        $item = Pengumuman::with('file')->findOrFail($id);
         $totalPengumuman = Pengumuman::count();
         return view('frontend.Pengumuman.detailpengumuman', compact('item', 'totalPengumuman'));
     }

@@ -23,7 +23,10 @@
           </ul>
         </li>
         <li class="nav-item"><a class="nav-link" href="/berita">Berita</a></li>
-        <li class="nav-item"><a class="nav-link" href="/galeri">Galeri</a></li>
+        <li class="nav-item"><a class="nav-link" href="/pengumuman">Pengumuman</a></li>
+        <li class="nav-item"><a class="nav-link" href="/galeri">Galeri
+
+        </a></li>
         <li class="nav-item"><a class="nav-link" href="/kontak"><i class="fas fa-phone-alt me-2" style="transform: scaleX(-1);"></i>Kontak</a></li>
       </ul>
     </div>

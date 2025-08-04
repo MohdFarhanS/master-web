@@ -18,7 +18,7 @@
 .struktur-section-title {
   font-size: 2.2rem;
   font-weight: 800;
-  color: #ff7300;
+  color: #0d6efd;
   letter-spacing: 2px;
   margin-bottom: 32px;
   text-shadow: 1px 1px 0 #fff;
@@ -64,8 +64,10 @@
     <div class="col-lg-10">
       <div class="struktur-card">
         @if(isset($profileInstansi) && is_object($profileInstansi))
-            @if(isset($profileInstansi->file) && $profileInstansi->file)
+            @if(isset($profileInstansi->file) && is_object($profileInstansi->file) && isset($profileInstansi->file->link_stream))
                 <img src="{{ $profileInstansi->file->link_stream }}" alt="Struktur Organisasi" class="struktur-img">
+            @elseif(!empty($profileInstansi->struktur_organisasi))
+                <img src="{{ $profileInstansi->struktur_organisasi }}" alt="Struktur Organisasi" class="struktur-img">
             @else
                 <div class="struktur-empty">Belum ada gambar struktur organisasi.</div>
             @endif

@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-      .text-orange { color: #F15A29; }
+      .text-blue { color: #0d6efd; }
       #mainNavbar {
         z-index: 1055;
         position: sticky;

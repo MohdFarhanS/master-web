@@ -85,23 +85,23 @@
     background: #c82333;
     color: white;
   }
-  .empty-state {
-    text-align: center;
-    padding: 60px 20px;
-    background: #f8f9fa;
+  .stats-box {
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    padding: 20px;
     border-radius: 12px;
-    margin: 40px 0;
+    margin-bottom: 30px;
+    text-align: center;
   }
-  .empty-icon {
-    font-size: 4rem;
-    color: #6c757d;
-    margin-bottom: 20px;
+  .stats-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0d6efd;
   }
 </style>
 
 <div class="pengumuman-header">
   <div class="container">
-    <h1>PENGUMUMAN</h1>
+    <h1>SEMUA PENGUMUMAN</h1>
     <p class="mt-3 mb-0" style="font-size:1.1rem;opacity:0.9;">Informasi Terbaru dan Penting</p>
   </div>
 </div>
@@ -109,18 +109,23 @@
 <section class="container py-4">
   <div class="row justify-content-center">
     <div class="col-lg-10">
-      @forelse($pengumuman ?? [] as $item)
-        @if(is_object($item))
+      
+      <div class="stats-box">
+        <div class="stats-number">{{ $totalPengumuman ?? $pengumuman->total() }}</div>
+        <h6 class="mb-0 text-muted">Total Pengumuman</h6>
+      </div>
+
+      @forelse($pengumuman as $item)
         <div class="pengumuman-item">
           <div class="pengumuman-date-badge">
             <i class="fas fa-calendar-alt me-2"></i>
-            {{ isset($item->created_at) ? $item->created_at->format('d M Y') : '-' }}
+            {{ $item->created_at->format('d M Y') }}
           </div>
           
-          <h3 class="pengumuman-title">{{ $item->judul ?? '-' }}</h3>
+          <h3 class="pengumuman-title">{{ $item->judul }}</h3>
           
           <div class="pengumuman-content">
-            {{ Str::limit(strip_tags($item->deskripsi ?? $item->isi ?? $item->content ?? ''), 200) }}
+            {{ Str::limit(strip_tags($item->deskripsi ?? $item->isi ?? $item->content), 250) }}
           </div>
           
           <div class="pengumuman-actions">
@@ -134,16 +139,21 @@
             </a>
           </div>
         </div>
-        @endif
       @empty
-        <div class="empty-state">
-          <div class="empty-icon">
-            <i class="fas fa-bullhorn"></i>
-          </div>
+        <div class="text-center py-5">
+          <i class="fas fa-bullhorn fa-4x text-muted mb-3"></i>
           <h4 class="text-muted">Belum Ada Pengumuman</h4>
           <p class="text-muted">Pengumuman akan ditampilkan di sini ketika tersedia.</p>
         </div>
       @endforelse
+
+      <!-- Pagination -->
+      @if($pengumuman->hasPages())
+        <div class="d-flex justify-content-center mt-4">
+          {{ $pengumuman->links() }}
+        </div>
+      @endif
+
     </div>
   </div>
 </section>

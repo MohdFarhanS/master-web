@@ -18,7 +18,7 @@ class FrontendController extends Controller
         $profileInstansi = ProfileInstansi::with('file')->first();
         $profilePimpinan = ProfilePimpinan::with('file')->get();
         $beritaTerbaru = Berita::with('file')->latest()->take(5)->get();
-        $galeri = Galeri::with('file')->latest()->get();
+        $galeri = Galeri::with('file')->latest()->take(6)->get();
         $pengumuman = Pengumuman::latest()->take(5)->get();
         $kontak = Kontak::first();
         $banner = null;
@@ -46,9 +46,8 @@ class FrontendController extends Controller
 
     // Detail pengumuman berdasarkan ID
     public function pengumumanDetail($id) {
-        $item = Pengumuman::findOrFail($id);
-        $totalPengumuman = Pengumuman::count();
-        return view('frontend.Pengumuman.detailpengumuman', compact('item', 'totalPengumuman'));
+        $item = Pengumuman::with('file')->findOrFail($id);
+        return view('frontend.Pengumuman.detailpengumuman', compact('item'));
     }
     // Tampilkan profil instansi
     public function instansi() {
@@ -90,8 +89,14 @@ class FrontendController extends Controller
     }
     // Tampilkan daftar pengumuman
     public function pengumuman() {
-        $pengumuman = Pengumuman::latest()->get();
+        $pengumuman = Pengumuman::with('file')->latest()->get();
         return view('frontend.Pengumuman.pengumuman', compact('pengumuman'));
+    }
+    // Tampilkan semua pengumuman dengan pagination
+    public function semuaPengumuman() {
+        $pengumuman = Pengumuman::latest()->paginate(10);
+        $totalPengumuman = Pengumuman::count();
+        return view('frontend.Pengumuman.semua-pengumuman', compact('pengumuman', 'totalPengumuman'));
     }
     // Tampilkan halaman kontak
     public function kontak() {

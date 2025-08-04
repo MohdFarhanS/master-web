@@ -5,15 +5,15 @@
     .card { border-radius: 18px; box-shadow: 0 4px 24px rgba(0,0,0,0.07); transition: box-shadow 0.2s; }
     .card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
     .card-img-top, .img-fluid.rounded, .img-fluid.rounded-circle, .img-fluid.rounded.shadow { border-radius: 12px; object-fit: cover; }
-    .fw-bold, .card-header.fw-bold, .section-title { color: #ff7300 !important; font-weight: 800; letter-spacing: 2px; }
+    .fw-bold, .card-header.fw-bold, .section-title { color: #0d6efd !important; font-weight: 800; letter-spacing: 2px; }
     .badge.bg-warning, .badge.bg-danger { font-size: 1rem; border-radius: 8px; padding: 6px 14px; font-weight: 600; }
     .card-header.fw-bold { background: #f8f9fa; border-bottom: 1px solid #eee; font-size: 1.1rem; letter-spacing: 1px; }
     .card-body.text-center { padding-top: 24px; padding-bottom: 24px; }
     .list-group-item { border: none; border-bottom: 1px solid #f0f0f0; background: transparent; }
     .list-group-item:last-child { border-bottom: none; }
-    .rounded-circle { border: 3px solid #ff7300; box-shadow: 0 2px 8px rgba(255,115,0,0.08); }
+    .rounded-circle { border: 3px solid #0d6efd; box-shadow: 0 2px 8px rgba(13,110,253,0.08); }
     .btn-outline-primary { border-radius: 8px; font-weight: 600; padding: 6px 18px; transition: background 0.2s, color 0.2s; }
-    .btn-outline-primary:hover { background: #ff7300; color: #fff; border-color: #ff7300; }
+    .btn-outline-primary:hover { background: #0d6efd; color: #fff; border-color: #0d6efd; }
     @media (max-width: 991px) {
         .col-lg-8, .col-lg-4 { max-width: 100% !important; flex: 0 0 100%; }
         .card { margin-bottom: 24px; }

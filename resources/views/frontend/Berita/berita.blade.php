@@ -23,7 +23,7 @@
     position: absolute;
     left: 18px;
     top: 18px;
-    background: #F15A29;
+    background: #0d6efd;
     color: #fff;
     padding: 8px 14px;
     border-radius: 10px;
@@ -45,7 +45,7 @@
     margin-bottom: 10px;
   }
   .berita-link {
-    color: #F15A29;
+    color: #0d6efd;
     font-weight: 600;
     text-decoration: underline;
   }

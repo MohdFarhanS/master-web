@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <style>
-    /* Dropdown menu orange for navbar */
+    /* Dropdown menu blue for navbar */
 .navbar .dropdown-menu {
-  background: #F15A29 !important;
+  background: #0d6efd !important;
   border: none;
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
 }
@@ -13,11 +13,11 @@
   transition: background 0.2s, color 0.2s;
 }
 .navbar .dropdown-item:hover, .navbar .dropdown-item:focus {
-  background: #ff7300 !important;
+  background: #0d6efd !important;
   color: #fff !important;
 }
-    .navbar-orange {
-        background: #f55a24;
+    .navbar-blue {
+        background: #0d6efd;
         color: #fff;
         position: sticky;
         top: 0;
@@ -28,11 +28,11 @@
         font-family: 'Arial Black', 'Arial', 'Segoe UI', 'sans-serif';
         font-size: 3rem;
         font-weight: 900;
-        color: #ff4c00;
+        color: #0d6efd;
         margin-bottom: 18px;
         letter-spacing: 2px;
         text-transform: uppercase;
-        border-bottom: 4px solid #ff4c00;
+        border-bottom: 4px solid #0d6efd;
         display: inline-block;
         padding-bottom: 4px;
         line-height: 1.1;
@@ -58,7 +58,7 @@
         position: absolute;
         left: 32px;
         top: 260px;
-        background: #F15A29;
+        background: #0d6efd;
         color: #fff;
         font-size: 2rem;
         font-weight: bold;
@@ -86,7 +86,7 @@
     }
     .dashboard-berita-link {
         font-size: 1rem;
-        color: #F15A29;
+        color: #0d6efd;
         font-weight: 600;
         text-decoration: underline;
         margin-top: 8px;
@@ -160,7 +160,7 @@
 </style>
 
 
-<!-- Sticky Orange Navbar -->
+<!-- Sticky Blue Navbar -->
 <section class="container py-4">
     <!-- Banner Section -->
     <div class="mb-4">
