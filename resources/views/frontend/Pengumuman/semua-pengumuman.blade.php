@@ -2,7 +2,7 @@
 @section('content')
 <style>
   .pengumuman-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: ;
     color: white;
     padding: 60px 0 40px 0;
     text-align: center;

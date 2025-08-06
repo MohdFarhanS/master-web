@@ -76,7 +76,7 @@
   }
 
    .berita-header-bg {
-    background: #fdf4f5;
+    background: linear-gradient(135deg, #e4ebffff 0%, #002affff 100%);
     padding: 60px 0 32px 0;
     margin-bottom: 0;
     text-align: center;

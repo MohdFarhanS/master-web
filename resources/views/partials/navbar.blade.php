@@ -102,7 +102,7 @@
     font-size: 14px;
   }
   .navbar-orange {
-    background: #F15A29 !important;
+    background: #0d6efd !important;
     transition: background 0.3s;
     box-shadow: 0 2px 8px rgba(0,0,0,0.07);
   }

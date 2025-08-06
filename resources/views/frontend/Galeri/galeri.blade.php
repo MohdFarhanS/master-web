@@ -2,10 +2,11 @@
 @section('content')
 <style>
 .galeri-header-bg {
-  background: #fdf4f5;
-  padding: 60px 0 32px 0;
-  margin-bottom: 0;
-  text-align: center;
+   background: linear-gradient(135deg, #e4ebffff 0%, #002affff 100%);
+    color: white;
+    padding: 60px 0 40px 0;
+    text-align: center;
+    margin-bottom: 40px;
 }
 .galeri-header-title {
   font-size: 2.4rem;

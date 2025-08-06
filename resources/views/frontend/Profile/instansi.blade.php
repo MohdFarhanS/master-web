@@ -2,8 +2,8 @@
 @section('content')
 <style>
 .instansi-header-bg {
-  background: #fdf4f5;
-  padding: 60px 0 32px 0;
+  background: linear-gradient(135deg, #e4ebffff 0%, #002affff 100%)f5;
+  padding: 60px 0 32px 0;linear-gradient(135deg, #e4ebffff 0%, #002affff 100%)
   margin-bottom: 0;
   text-align: center;
 }
