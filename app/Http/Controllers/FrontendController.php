@@ -11,6 +11,7 @@ use App\Models\Pengumuman;
 use App\Models\Kontak;
 use App\Models\DashboardInstansi;
 use App\Models\Dashboard;
+use App\Models\Banner;
 
 class FrontendController extends Controller
 {
@@ -28,6 +29,7 @@ class FrontendController extends Controller
         $galeri = Galeri::with('file')->latest()->take(6)->get();
         $pengumuman = Pengumuman::latest()->take(5)->get();
         $kontak = Kontak::first();
+        $banner = Banner::first();
         return view('frontend.dashboard', compact('profileInstansi', 'profilePimpinan', 'beritaTerbaru', 'galeri', 'pengumuman', 'kontak'));
     }
 

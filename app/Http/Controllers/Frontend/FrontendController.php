@@ -10,10 +10,10 @@ use App\Models\Pengumuman;
 use App\Models\Kontak;
 use App\Models\DashboardInstansi;
 use App\Models\Dashboard;
+use App\Models\Banner;
 
 class FrontendController extends Controller
 {
-    // Tampilkan halaman dashboard
     public function dashboard() {
         $profileInstansi = ProfileInstansi::with('file')->first();
         $profilePimpinan = ProfilePimpinan::with('file')->get();
@@ -21,9 +21,7 @@ class FrontendController extends Controller
         $galeri = Galeri::with('file')->latest()->take(6)->get();
         $pengumuman = Pengumuman::latest()->take(5)->get();
         $kontak = Kontak::first();
-        $banner = null;
-        // Jika ada model Banner, aktifkan baris berikut:
-        // $banner = Banner::with('file')->latest()->first();
+        $banner = Banner::with('file')->latest()->first();
         return view('frontend.dashboard', [
             'profileInstansi' => $profileInstansi,
             'profilePimpinan' => $profilePimpinan,
