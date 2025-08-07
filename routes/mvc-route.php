@@ -51,6 +51,13 @@ Route::group(['prefix'=>config('mvc.route_prefix')], function () { // remove thi
 		});
 		Route::resource('pengumuman', 'Pengumuman\PengumumanController');
 		//end-pengumuman
+		//banner
+		Route::prefix('banner')->as('banner')->group(function () {
+			Route::get('data', 'Banner\BannerController@data');
+			Route::get('delete/{id}', 'Banner\BannerController@delete');
+		});
+		Route::resource('banner', 'Banner\BannerController');
+		//end-banner
 		//{{route replacer}} DON'T REMOVE THIS LINE
     });
 });

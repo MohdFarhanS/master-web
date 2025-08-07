@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
 <style>
-    /* Dropdown menu blue for navbar */
 .navbar .dropdown-menu {
   background: #0d6efd !important;
   border: none;
