@@ -23,7 +23,6 @@
     position: absolute;
     left: 18px;
     top: 18px;
-    background: #0d6efd;
     color: #fff;
     padding: 8px 14px;
     border-radius: 10px;
@@ -44,16 +43,12 @@
     color: #444;
     margin-bottom: 10px;
   }
-  .berita-link {
-    color: #0d6efd;
-    font-weight: 600;
-    text-decoration: underline;
-  }
   .sidebar-post {
     display: flex;
     align-items: center;
     border-bottom: 1px solid #eee;
     padding: 10px 0;
+    margin: 15px;
   }
   .sidebar-thumb {
     width: 48px;
@@ -115,7 +110,7 @@
           <div class="p-4">
             <div class="berita-title">{{ $berita->judul ?? '-' }}</div>
             <div class="berita-desc">{!! \Illuminate\Support\Str::limit(strip_tags($berita->isi ?? ''), 200) !!}</div>
-            <a href="{{ route('berita.detail', $berita->id ?? 0) }}" class="berita-link">Baca Selengkapnya...</a>
+            <a href="{{ route('berita.detail', $berita->id ?? 0) }}" style="color: {{ $berita->bg_color }}; font-weight: 600; text-decoration: underline;">Baca Selengkapnya...</a>
           </div>
         </div>
         @endif

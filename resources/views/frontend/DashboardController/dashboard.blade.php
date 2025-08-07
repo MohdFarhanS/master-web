@@ -65,7 +65,7 @@
                     @forelse($profilePimpinan ?? [] as $pimpinan)
                         <div class="mb-3 d-flex align-items-center">
                             @if(is_object($pimpinan) && isset($pimpinan->file) && is_object($pimpinan->file) && isset($pimpinan->file->link_stream))
-                                <img src="{{ $pimpinan->file->link_stream }}" alt="Foto Pimpinan" class="rounded-circle me-3" style="width:64px;height:64px;object-fit:cover;">
+                                <img src="{{ $pimpinan->file->link_stream }}" alt="Foto Pimpinan" class="me-3" style="width:64px;height:64px;object-fit:cover; border: 3px solid {{ $berita->bg_color }}">
                             @else
                                 <img src="https://ui-avatars.com/api/?name={{ urlencode(is_object($pimpinan) && isset($pimpinan->nama) ? $pimpinan->nama : 'Pimpinan') }}&size=64" alt="Foto Pimpinan" class="rounded-circle me-3" style="width:64px;height:64px;object-fit:cover;">
                             @endif
