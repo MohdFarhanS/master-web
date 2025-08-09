@@ -20,7 +20,7 @@ class Banner extends Model
 
     public function file() : object
     {
-        return $this->morphOne(File::class, 'fileable');
+        return $this->morphMany(File::class, 'fileable');
     }
 
     public function getFolderAttribute() : string

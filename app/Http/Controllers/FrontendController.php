@@ -29,8 +29,8 @@ class FrontendController extends Controller
         $galeri = Galeri::with('file')->latest()->take(6)->get();
         $pengumuman = Pengumuman::latest()->take(5)->get();
         $kontak = Kontak::first();
-        $banner = Banner::first();
-        return view('frontend.dashboard', compact('profileInstansi', 'profilePimpinan', 'beritaTerbaru', 'galeri', 'pengumuman', 'kontak'));
+        $banners = Banner::with('file')->latest()->get();
+        return view('frontend.dashboard', compact('profileInstansi', 'profilePimpinan', 'beritaTerbaru', 'galeri', 'pengumuman', 'kontak', 'banners'));
     }
 
     public function galeri()
