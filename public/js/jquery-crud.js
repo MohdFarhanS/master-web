@@ -233,7 +233,7 @@ $(window.document).on('click', '.delete-file', function (e) {
     }, function (isConfirm) {
         if (isConfirm) {
             fetch(btn.data('url'), {
-                method: 'DELETE',
+                type: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
                 },

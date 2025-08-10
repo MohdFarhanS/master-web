@@ -49,30 +49,40 @@ class BannerController extends Controller
         $request->validate([
             'judul' => 'required',
             'tampilkan' => 'nullable|boolean',
-            'file' => 'nullable|mimes:jpeg,png,jpg|max:2048',
+            'file.*' => 'nullable|mimes:jpeg,png,jpg|max:2048',
         ]);
 
-        if ($data=$this->model::create($request->all())) {
-            if($request->hasFile('file')){
-                $data->file()->create([
-                    'data'=>[
-                        'name'=>$request->file('file')->getClientOriginalName(),
-                        'disk'=>config('filesystems.default'),
-                        'target'=>Storage::putFile($data->folder, $request->file('file')),
-                    ],
-                ]);
+        $dataToCreate = $request->except(['file']);
+
+        if ($berita = $this->model::create($dataToCreate)) {
+
+            if ($request->hasFile('file')) {
+                foreach ($request->file('file') as $uploadedFile) {
+                    $targetPath = Storage::putFile($berita->folder, $uploadedFile);
+
+                    $berita->file()->create([
+                        'data' => [
+                            'name' => $uploadedFile->getClientOriginalName(),
+                            'disk' => config('filesystems.default'),
+                            'target' => $targetPath,
+                        ],
+                    ]);
+                }
             }
-            $response=[
-                'status'=>TRUE, 'message'=>'Data berhasil disimpan',
+            $response = [
+                'status' => true,
+                'message' => 'Data berhasil disimpan',
             ];
-        }
-        else {
-            $response=[
-                'status'=>FALSE, 'message'=>'Data gagal disimpan',
-            ];
-        }
-        return response()->json($response);
+            } else {
+                $response = [
+                    'status' => false,
+                    'message' => 'Data gagal disimpan',
+                ];
+            }
+        
+        return response()->json($response ?? ['status' => false, 'message' => 'Data gagal disimpan']);
     }
+
 
     public function show($id)
     {
@@ -91,28 +101,30 @@ class BannerController extends Controller
         $request->validate([
             'judul' => 'required',
             'tampilkan' => 'nullable|boolean',
-            'file' => 'nullable|mimes:jpeg,png,jpg|max:2048',
+            'file.*' => 'nullable|mimes:jpeg,png,jpg|max:2048',
+            'existing_files' => 'nullable|array',
         ]);
 
-        $data=$this->model::find($id);
-        if($data->update($request->all())){
+        $data = $this->model::findOrFail($id);
+        $dataToUpdate = $request->except(['new_files', 'existing_files']);
+
+        if ($data->update($dataToUpdate)) {
             if ($request->hasFile('file')) {
-                if ($data->file) {
-                    $data->file->forceDelete();
+                foreach ($request->file('file') as $uploadedFile) {
+                    $data->file()->create([
+                        'data' => [
+                            'disk' => config('filesystems.default'),
+                            'target' => Storage::putFile($data->folder, $uploadedFile),
+                            'name' => $uploadedFile->getClientOriginalName(),
+                        ],
+                    ]);
                 }
-                $data->file()->create([
-                    'data'=>[
-                        'disk'=>config('filesystems.default'),
-                        'target'=>Storage::putFile($data->folder, $request->file('file')),
-                        'name'=>$request->file('file')->getClientOriginalName(),
-                    ],
-                ]);
             }
-            $response=[
-                'status'=>TRUE, 'message'=>'Data berhasil disimpan',
-            ];
+        $response = [ 'status' => true, 'message' => 'Data berhasil disimpan', ];
+        } else {
+            $response = [ 'status' => false, 'message' => 'Data gagal diperbarui', ];
         }
-        return response()->json($response ?? ['status'=>FALSE, 'message'=>'Data gagal disimpan']);
+        return response()->json($response);
     }
 
     public function delete($id)

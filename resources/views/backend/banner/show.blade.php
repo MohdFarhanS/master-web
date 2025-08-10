@@ -7,18 +7,28 @@
                     {{  $data->judul }}
                 </div>
             </div>
-            <div>
-				<label>Foto Banner</label>
-                    @if(!is_null($data->file))
-                            @if($data->file->exists())
-                                <div class="form-group text-center">
-									@if($data->file->type == 'image')
-										<img src="{!! url($data->file->link_stream) !!}" alt="{!! $data->file->name !!}" style="width: 30%; height: auto;" />
-									@endif
+            <div class="form-group">
+                <label>Foto Banner</label>
+                @if(isset($data->file) && $data->file->isNotEmpty())
+                    <div class="row">
+                        @foreach ($data->file as $file)
+                            @if($file->exists() && $file->type == 'image')
+                                <div class="col-md-4 mb-3">
+                                    <div class="card p-2 text-center">
+                                        <img src="{!! url($file->link_stream) !!}" 
+                                             alt="{!! $file->name !!}" 
+                                             style="width: 100%; height: auto;" />
+                                    </div>
                                 </div>
                             @endif
-            		@endif
-			</div>
+                        @endforeach
+                    </div>
+                @else
+                    <div class="text-muted mt-2">
+                        <p>Tidak ada banner yang ditautkan.</p>
+                    </div>
+                @endif
+            </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Status Publikasi :</label>

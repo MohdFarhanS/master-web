@@ -163,10 +163,32 @@
 <section class="container py-4">
     <!-- Banner Section -->
     <div class="mb-4">
-        @if(isset($banner) && is_object($banner) && isset($banner->file))
-            <img src="{{ $banner->file->link_stream ?? '/img/banner-default.jpg' }}" class="w-100 rounded shadow-sm" alt="Banner" style="max-height:320px;object-fit:cover;">
+        @if(isset($banners) && $banners->count() > 0)
+            <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner rounded shadow-sm">
+                    @foreach($banners as $index => $banner)
+                        @if(isset($banner->file) && is_object($banner->file) && isset($banner->file->link_stream) && $banner->file->link_stream)
+                            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                <img src="{{ $banner->file->link_stream }}" class="d-block w-100" alt="Banner {{ $index + 1 }}" style="max-height:320px;object-fit:cover;">
+                            </div>
+                        @else
+                            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                <img src="{{ asset('/img/banner-default.jpg') }}" class="d-block w-100" alt="Banner Default" style="max-height:320px;object-fit:cover;">
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#bannerCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
         @else
-            <img src="/img/banner-default.jpg" class="w-100 rounded shadow-sm" alt="Banner" style="max-height:320px;object-fit:cover;">
+            <img src="{{ asset('/img/banner-default.jpg') }}" class="w-100 rounded shadow-sm" alt="Banner Default" style="max-height:320px;object-fit:cover;">
         @endif
     </div>
 
