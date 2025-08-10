@@ -35,6 +35,7 @@
 									<tr>
 										<th class="w-0">No</th>
 										<th>Judul</th>
+										<th>Publish</th>
 										<th class="text-center w-0">Action</th>
 									</tr>
 									</thead>

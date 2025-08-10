@@ -39,8 +39,11 @@ class BannerController extends Controller
                 }
                 return "<div class='btn-group'>".$button."</div>";
             })
+            ->editColumn('publish', function ($data) {
+                return $data->tampilkan ? '<span class="badge badge-success">Ya</span>' : '<span class="badge badge-danger">Tidak</span>';
+            })
             ->addIndexColumn()
-            ->rawColumns(['action'])
+            ->rawColumns(['action','publish'])
             ->make();
     }
 

@@ -167,10 +167,16 @@
             <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner rounded shadow-sm">
                     @foreach($banners as $index => $banner)
-                        @if(isset($banner->file) && is_object($banner->file) && isset($banner->file->link_stream) && $banner->file->link_stream)
-                            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                                <img src="{{ $banner->file->link_stream }}" class="d-block w-100" alt="Banner {{ $index + 1 }}" style="max-height:320px;object-fit:cover;">
-                            </div>
+                        @if(isset($banner->file) && $banner->file->isNotEmpty())
+                            @foreach ($banner->file as $file)
+                                @if($file->exists() && $file->type == 'image')
+                                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                    <img src="{{ url($file->link_stream) }}" class="d-block w-100" alt="Banner {{ $index + 1 }}" style="max-height:320px;">
+                                    </div>
+                                    @endif
+
+                                @endforeach
+
                         @else
                             <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
                                 <img src="{{ asset('/img/banner-default.jpg') }}" class="d-block w-100" alt="Banner Default" style="max-height:320px;object-fit:cover;">
@@ -205,7 +211,7 @@
                             <img src="/img/berita-default.jpg" class="dashboard-berita-img" alt="Berita">
                         @endif
                         @if(isset($berita->created_at))
-                            <div class="dashboard-berita-date">
+                            <div class="dashboard-berita-date" style="background-color: {{ $berita->bg_color }}; !important">
                                 {{ $berita->created_at->format('d') }}<br><span style="font-size:1.1rem;font-weight:400;">{{ $berita->created_at->format('M') }}</span>
                             </div>
                         @endif
@@ -213,7 +219,7 @@
                     <div class="dashboard-berita-content">
                         <div class="dashboard-berita-title">{{ $berita->judul ?? '-' }}</div>
                         <div class="dashboard-berita-desc">{!! \Illuminate\Support\Str::limit(strip_tags($berita->isi ?? ''), 200) !!}</div>
-                        <a href="{{ route('berita.detail', $berita->id ?? 0) }}" class="dashboard-berita-link">Baca Selengkapnya...</a>
+                        <a href="{{ route('berita.detail', $berita->id ?? 0) }}" class="dashboard-berita-link" style="color: {{ $berita->bg_color }}; !important">Baca Selengkapnya...</a>
                     </div>
                 </div>
             @empty
