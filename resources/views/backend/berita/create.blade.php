@@ -44,7 +44,7 @@
     }
 
     .form-control-color {
-        height: calc(1.5em + .75rem + 2px); 
+        height: calc(1.5em + .75rem + 2px);
         padding: .375rem .75rem;
     }
 </style>
@@ -56,9 +56,28 @@
     document.addEventListener('DOMContentLoaded', function() {
         const colorInput = document.getElementById('bg_color');
         if (colorInput) {
-            if (!colorInput.value) { 
+            if (!colorInput.value) {
                 colorInput.value = '#FFFFFF';
             }
         }
+    });
+    $('#deskripsi').summernote({
+        tabsize: 2,
+        height: 250,
+        toolbar: [
+            "style",
+            "ol",
+            "ul",
+            "height",
+            "fontsize",
+            "paragraph",
+            "table",
+            "insert",
+            "codeview",
+            "link",
+            "video",
+
+        ],
+        fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36'],
     });
 </script>
