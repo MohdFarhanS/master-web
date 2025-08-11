@@ -65,4 +65,24 @@
             }
         }
     });
+
+    $('#kata_pengantar, #visi_misi, #sejarah_singkat, #tugas_fungsi').summernote({
+        tabsize: 2,
+        height: 250,
+        toolbar: [
+            "style",
+            "ol",
+            "ul",
+            "height",
+            "fontsize",
+            "paragraph",
+            "table",
+            "insert",
+            "codeview",
+            "link",
+            "video",
+
+        ],
+        fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36'],
+    });
 </script>
