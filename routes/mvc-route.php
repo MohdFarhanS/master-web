@@ -15,7 +15,7 @@ Route::group(['prefix'=>config('mvc.route_prefix')], function () { // remove thi
 			Route::get('delete/{id}', 'ProfilePimpinan\ProfilePimpinanController@delete');
 		});
 		Route::resource('profile-pimpinan', 'ProfilePimpinan\ProfilePimpinanController');
-		//end-profile-pimpinan
+		//end-profile-pimpinanOf Akira ax you to take care of. My friend over. Galaxy. Galaxy. 
 		//dashboard-instansi
 		Route::prefix('dashboard-instansi')->as('dashboard-instansi')->group(function () {
 			Route::get('data', 'DashboardInstansi\DashboardInstansiController@data');

@@ -22,6 +22,14 @@
         top: 0;
         z-index: 1040;
         box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        width: 100vw;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 0 !important;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
     }
     .dashboard-section-title {
         font-family: 'Arial Black', 'Arial', 'Segoe UI', 'sans-serif';
@@ -160,29 +168,30 @@
 
 
 <!-- Sticky Blue Navbar -->
-<section class="container py-4">
+<section class="container py-4" style="margin-top:110px;">
     <!-- Banner Section -->
     <div class="mb-4">
         @if(isset($banners) && $banners->count() > 0)
             <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner rounded shadow-sm">
-                    @foreach($banners as $index => $banner)
-                        @if(isset($banner->file) && $banner->file->isNotEmpty())
-                            @foreach ($banner->file as $file)
-                                @if($file->exists() && $file->type == 'image')
-                                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                                    <img src="{{ url($file->link_stream) }}" class="d-block w-100" alt="Banner {{ $index + 1 }}" style="max-height:320px;">
+                    @php $hasImage = false; $slideIndex = 0; @endphp
+                    @foreach($banners as $banner)
+                        @if(isset($banner->file) && is_iterable($banner->file) && count($banner->file) > 0)
+                            @foreach($banner->file as $file)
+                                @if(isset($file->type, $file->link_stream) && $file->type === 'image' && !empty($file->link_stream))
+                                    <div class="carousel-item {{ !$hasImage ? 'active' : '' }}">
+                                        <img src="{{ url($file->link_stream) }}" class="d-block" alt="Banner {{ $slideIndex + 1 }}" style="max: width 95px;px;width:100%;height:auto;aspect-ratio:16/7;object-fit:contain;display:block;margin:0 auto;">
                                     </div>
-                                    @endif
-
-                                @endforeach
-
-                        @else
-                            <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                                <img src="{{ asset('/img/banner-default.jpg') }}" class="d-block w-100" alt="Banner Default" style="max-height:320px;object-fit:cover;">
-                            </div>
+                                    @php $hasImage = true; $slideIndex++; @endphp
+                                @endif
+                            @endforeach
                         @endif
                     @endforeach
+                    @if(!$hasImage)
+                        <div class="carousel-item active">
+                            <img src="{{ asset('/img/banner-default.jpg') }}" class="d-block" alt="Banner Default" style="max-width:900px;width:100%;height:auto;aspect-ratio:16/7;object-fit:contain;display:block;margin:0 auto;">
+                        </div>
+                    @endif
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#bannerCarousel" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -194,7 +203,7 @@
                 </button>
             </div>
         @else
-            <img src="{{ asset('/img/banner-default.jpg') }}" class="w-100 rounded shadow-sm" alt="Banner Default" style="max-height:320px;object-fit:cover;">
+            <img src="{{ asset('/img/banner-default.jpg') }}" class="w-90 rounded shadow-sm" alt="Banner Default" style="max-height:320px;object-fit:cover;">
         @endif
     </div>
 
@@ -306,7 +315,7 @@
     </div>
 
     <!-- Lokasi Section -->
-    <div style="font-family:'Arial Black','Arial','Segoe UI',sans-serif;font-size:3.5rem;font-weight:900;color:#ff4c00;letter-spacing:2px;text-transform:uppercase;border-bottom:6px solid #ff4c00;display:inline-block;padding-bottom:6px;line-height:1.1;margin-bottom:32px;">LOKASI</div>
+    <div style="font-family:'Arial Black','Arial','Segoe UI',sans-serif;font-size:3.5rem;font-weight:900;color:#0037ffff;letter-spacing:2px;text-transform:uppercase;border-bottom:6px solid #0037ffff;display:inline-block;padding-bottom:6px;line-height:1.1;margin-bottom:32px;">LOKASI</div>
     <div class="mb-4" style="margin-top:32px;">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.728282019839!2d101.45582153528665!3d0.523317600930215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5ade64f297b57%3A0x2ee541838c361bba!2sBadan%20Riset%20dan%20Inovasi%20Daerah%20(BRIDA)%20Provinsi%20Riau!5e0!3m2!1sid!2sid!4v1753763766945!5m2!1sid!2sid" width="100%" height="420" style="border:0;min-width:320px;max-width:100vw;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
