@@ -4,25 +4,25 @@
 			<div class="col-md-12">
                 <div class="form-group">
                     <label>Kata Pengantar :</label>
-                    {{  $data->kata_pengantar }}
+                    {!!  $data->kata_pengantar !!}
                 </div>
             </div>
 			<div class="col-md-12">
                 <div class="form-group">
                     <label>Sejarah Singkat :</label>
-                    {{  $data->sejarah_singkat }}
+                    {!!  $data->sejarah_singkat !!}
                 </div>
             </div>
 			<div class="col-md-12">
                 <div class="form-group">
                     <label>Visi dan Misi :</label>
-                    {{  $data->visi_misi }}
+                    {!!  $data->visi_misi !!}
                 </div>
             </div>
 			<div class="col-md-12">
                 <div class="form-group">
                     <label>Tugas dan Fungsi :</label>
-                    {{  $data->tugas_fungsi }}
+                    {!!  $data->tugas_fungsi !!}
                 </div>
             </div>
 			<div>

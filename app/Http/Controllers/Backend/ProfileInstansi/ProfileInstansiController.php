@@ -40,7 +40,7 @@ class ProfileInstansiController extends Controller
                 return "<div class='btn-group'>".$button."</div>";
             })
             ->addIndexColumn()
-            ->rawColumns(['action'])
+            ->rawColumns(['action', 'kata_pengantar', 'sejarah_singkat', 'visi_misi', 'tugas_fungsi'])
             ->make();
     }
 

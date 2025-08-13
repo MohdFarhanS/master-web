@@ -11,7 +11,7 @@
                 <div class="form-group">
                     <label>Deskripsi Berita :</label>
 					<div class="p-10 shadow-sm">
-						{{  $data->deskripsi }}
+						{!!  $data->deskripsi !!}
 					</div>
                 </div>
             </div>

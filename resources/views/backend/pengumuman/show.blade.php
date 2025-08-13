@@ -10,7 +10,7 @@
 			<div class="col-md-12">
                 <div class="form-group">
                     <label>Deskripsi :</label>
-                    {{  $data->deskripsi }}
+                    {!! $data->deskripsi !!}
                 </div>
             </div>
 			<div class="col-md-12">

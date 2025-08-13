@@ -40,7 +40,7 @@ class PengumumanController extends Controller
                 return "<div class='btn-group'>".$button."</div>";
             })
             ->addIndexColumn()
-            ->rawColumns(['action'])
+            ->rawColumns(['action', 'deskripsi'])
             ->make();
     }
 

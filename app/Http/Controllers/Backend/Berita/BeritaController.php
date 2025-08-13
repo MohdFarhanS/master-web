@@ -40,7 +40,7 @@ class BeritaController extends Controller
                 return "<div class='btn-group'>".$button."</div>";
             })
             ->addIndexColumn()
-            ->rawColumns(['action'])
+            ->rawColumns(['deskripsi','action'])
             ->make();
     }
 
