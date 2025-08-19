@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Berita')
+
 @section('content')
 <style>
   .berita-card {

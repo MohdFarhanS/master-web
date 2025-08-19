@@ -229,9 +229,7 @@
 </style>
 
 
-<!-- Sticky Blue Navbar -->
 <section class="container py-4" style="margin-top:110px;">
-    <!-- Banner Section -->
     <div class="mb-4">
         @if(isset($banners) && $banners->count() > 0)
             <div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -269,11 +267,9 @@
         @endif
     </div>
 
-    <!-- Berita Section -->
     <div class="dashboard-section-title">BERITA TERKINI!</div>
     <div class="row mb-4">
         <div class="col-lg-8 mb-3">
-            <!-- Updated Berita Section -->
             @forelse($beritaTerbaru ?? [] as $berita)
               @if(is_object($berita))
                 <div class="dashboard-berita">
@@ -320,7 +316,6 @@
                     <div class="text-muted">Belum ada data pimpinan.</div>
                 @endif
             </div>
-            <!-- Postingan Terbaru -->
             <div class="mb-3" style="background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.07);padding:24px 18px 18px 18px;">
                 <div style="font-size:1.5rem;font-weight:900;color:#232323;margin-bottom:12px;letter-spacing:0.5px;">Postingan Terbaru</div>
                 @foreach($beritaTerbaru ?? [] as $berita)
@@ -344,7 +339,6 @@
                     <div class="text-muted">Belum ada berita terbaru.</div>
                 @endif
             </div>
-            <!-- Pengumuman -->
             <div style="background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,0.07);padding:24px 18px 18px 18px;">
                 <div style="font-size:1.5rem;font-weight:900;color:#232323;margin-bottom:8px;letter-spacing:0.5px;border-bottom:2px solid #eee;padding-bottom:4px;">Pengumuman</div>
                 <ul style="list-style-type:disc;padding-left:20px;margin-bottom:0;">
@@ -362,7 +356,6 @@
         </div>
     </div>
 
-    <!-- Galeri Section -->
     <div class="dashboard-section-title">GALERI</div>
     <section class="container py-5">
         <div class="row">
@@ -389,7 +382,6 @@
         </div>
     </section>
 
-    <!-- Modal for Galeri -->
     <div id="galeriModal" class="galeri-modal-overlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:1050;align-items:center;justify-content:center;">
       <div class="galeri-modal-content" style="background:#fff;padding:20px;border-radius:12px;max-width:600px;width:90%;text-align:center;position:relative;">
         <button class="galeri-modal-close" onclick="closeGaleriModal()" style="position:absolute;top:10px;right:10px;background:none;border:none;font-size:1.5rem;color:#333;cursor:pointer;">&times;</button>
@@ -439,7 +431,6 @@
       hoverBox.style.opacity = '0';
     }
     </script>
-    <!-- Lokasi Section -->
     <div style="font-family:'Arial Black','Arial','Segoe UI',sans-serif;font-size:3.5rem;font-weight:900;color:#0037ffff;letter-spacing:2px;text-transform:uppercase;border-bottom:6px solid #0037ffff;display:inline-block;padding-bottom:6px;line-height:1.1;margin-bottom:32px;">LOKASI</div>
     <div class="mb-4" style="margin-top:32px;">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.728282019839!2d101.45582153528665!3d0.523317600930215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5ade64f297b57%3A0x2ee541838c361bba!2sBadan%20Riset%20dan%20Inovasi%20Daerah%20(BRIDA)%20Provinsi%20Riau!5e0!3m2!1sid!2sid!4v1753763766945!5m2!1sid!2sid" width="100%" height="420" style="border:0;min-width:320px;max-width:100vw;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>

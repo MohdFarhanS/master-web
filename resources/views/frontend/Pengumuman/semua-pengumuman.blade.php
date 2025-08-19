@@ -147,7 +147,6 @@
         </div>
       @endforelse
 
-      <!-- Pagination -->
       @if($pengumuman->hasPages())
         <div class="d-flex justify-content-center mt-4">
           {{ $pengumuman->links() }}

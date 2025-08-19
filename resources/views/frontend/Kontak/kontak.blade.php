@@ -109,9 +109,9 @@
       <div class="kontak-card h-100">
         <div class="kontak-info-title" style="text-align:left;margin-bottom:24px;">Informasi Kontak</div>
         <div class="kontak-info-list">
-          <div><span class="kontak-info-label">Alamat&nbsp;:</span> {{ $kontak->alamat ?? 'Jl. Dr. Sutomo No. 106, Suka Mulia, Kec. Sail, Kota Pekanbaru, Riau 28133' }}</div>
-          <div><span class="kontak-info-label">Telepon&nbsp;:</span> {{ $kontak->telp ?? '(0761) 123456' }}</div>
-          <div><span class="kontak-info-label">Email&nbsp;:</span> {{ $kontak->email ?? 'brida@riau.go.id' }}</div>
+          <div><span class="kontak-info-label">Alamat&nbsp;:</span> {{ $kontak->alamat }}</div>
+          <div><span class="kontak-info-label">Telepon&nbsp;:</span> {{ $kontak->telp }}</div>
+          <div><span class="kontak-info-label">Email&nbsp;:</span> {{ $kontak->email }}</div>
         </div>
         <div class="kontak-sosmed">
           Ikuti Kami<br>

@@ -35,7 +35,7 @@
 .galeri-img-hoverbox {
   position: relative;
   width: 100%;
-  height: 300px; /* Ensures consistent height */
+  height: 300px; 
   border-radius: 14px;
   overflow: hidden;
   cursor: pointer;
@@ -65,9 +65,9 @@
   z-index: 2;
 }
 .galeri-img-hoverbox .galeri-hover-title {
-  color: #0066ffff; /* Changed color to match example */
-  font-size: 1.1rem; /* Adjusted font size */
-  font-family: Arial, sans-serif; /* Updated font family */
+  color: #0066ffff; 
+  font-size: 1.1rem;
+  font-family: Arial, sans-serif;
   font-weight; 
   margin-bottom: 10px;
   text-align: center;
@@ -75,8 +75,8 @@
 }
 .galeri-img-hoverbox .galeri-hover-link {
   color: #fff;
-  font-size: 1.6rem; /* Adjusted font size */
-  font-family: Arial, sans-serif; /* Updated font family */
+  font-size: 1.6rem;
+  font-family: Arial, sans-serif;
   font-weight: bold;
   text-align: center;
   text-decoration: none;
