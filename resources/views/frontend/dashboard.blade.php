@@ -67,33 +67,39 @@
         top: 260px;
         background: #0d6efd;
         color: #fff;
-        font-size: 2rem;
+        font-size: 1.1rem;
         font-weight: bold;
         border-radius: 10px;
         padding: 12px 18px 6px 18px;
         text-align: center;
         box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-        line-height: 1.1;
+        line-height: 1.3;
         z-index: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        height: 80px;
     }
     .dashboard-berita-content {
         margin-top: 24px;
     }
     .dashboard-berita-title {
-        font-size: 2rem;
+        font-size: 1.4rem;
         font-weight: 700;
         color: #232323;
         margin: 24px 0 12px 0;
         text-shadow: 1px 1px 0 #fff;
     }
     .dashboard-berita-desc {
-        font-size: 1.1rem;
+        font-size: 1.4rem;
         color: #232323;
         margin-bottom: 18px;
     }
     .dashboard-berita-link {
         font-size: 1rem;
-        color: #0d6efd;
+        color: #adb4beff;
         font-weight: 600;
         text-decoration: underline;
         margin-top: 8px;
@@ -149,21 +155,77 @@
         width: 100%;
         height: auto;
         border-radius: 8px;
+        transI. The. ition: transform 0.3s;
     }
-    .dashboard-map {
+    .dashboard-galeri-img:hover {
+        transform: scale(1.05);
+    }
+    .galeri-img-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .galeri-img-card:hover .galeri-img-hoverbox {
+        opacity: 1;
+    }
+    .galeri-modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 100%;
-        height: 260px;
-        border-radius: 8px;
-        margin-bottom: 20px;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        z-index: 1050;
+        align-items: center;
+        justify-content: center;
+    }
+    .galeri-modal-content {
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        max-width: 600px;
+        width: 90%;
+        text-align: center;
+        position: relative;
+    }
+    .galeri-modal-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
         border: none;
+        font-size: 1.5rem;
+        color: #333;
+        cursor: pointer;
     }
-    .dashboard-profil-instansi {
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        padding: 16px;
-    }
-
+    .dashboard-galeri-img {
+  width: 100%;
+  height: auto;
+  transition: filter 0.3s;
+}
+.galeri-img-card:hover .dashboard-galeri-img {
+  filter: blur(4px);
+}
+.galeri-img-hoverbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.galeri-img-card:hover .galeri-img-hoverbox {
+  opacity: 1;
+}
 </style>
 
 
@@ -211,28 +273,31 @@
     <div class="dashboard-section-title">BERITA TERKINI!</div>
     <div class="row mb-4">
         <div class="col-lg-8 mb-3">
+            <!-- Updated Berita Section -->
             @forelse($beritaTerbaru ?? [] as $berita)
+              @if(is_object($berita))
                 <div class="dashboard-berita">
-                    <div style="position:relative;">
-                        @if(isset($berita->file) && isset($berita->file->link_stream) && $berita->file->link_stream)
-                            <img src="{{ $berita->file->link_stream }}" class="dashboard-berita-img" alt="Berita">
-                        @else
-                            <img src="/img/berita-default.jpg" class="dashboard-berita-img" alt="Berita">
-                        @endif
-                        @if(isset($berita->created_at))
-                            <div class="dashboard-berita-date" style="background-color: {{ $berita->bg_color }}; !important">
-                                {{ $berita->created_at->format('d') }}<br><span style="font-size:1.1rem;font-weight:400;">{{ $berita->created_at->format('M') }}</span>
-                            </div>
-                        @endif
+                  <div style="position:relative;">
+                    @if(isset($berita->file) && is_object($berita->file) && isset($berita->file->link_stream))
+                      <img src="{{ $berita->file->link_stream }}" class="dashboard-berita-img" alt="Berita">
+                    @else
+                      <img src="/img/berita-default.jpg" class="dashboard-berita-img" alt="Berita">
+                    @endif
+                    @if(isset($berita->created_at))
+                      <div class="dashboard-berita-date" style="background-color: {{ $berita->bg_color ?? '#0d6efd' }};">
+                        {{ $berita->created_at->format('d M Y') }}
                     </div>
-                    <div class="dashboard-berita-content">
-                        <div class="dashboard-berita-title">{{ $berita->judul ?? '-' }}</div>
-                        <div class="dashboard-berita-desc">{!! \Illuminate\Support\Str::limit(strip_tags($berita->isi ?? ''), 200) !!}</div>
-                        <a href="{{ route('berita.detail', $berita->id ?? 0) }}" class="dashboard-berita-link" style="color: {{ $berita->bg_color }}; !important">Baca Selengkapnya...</a>
-                    </div>
+                    @endif
+                  </div>
+                  <div class="dashboard-berita-content">
+                    <div class="dashboard-berita-title">{{ $berita->judul ?? '-' }}</div>
+                    <div class="dashboard-berita-desc">{!! \Illuminate\Support\Str::limit(strip_tags($berita->deskripsi ?? 'deskripsi_berita'), 200) !!}</div>
+                    <a href="{{ route('berita.detail', $berita->id ?? 0) }}" class="dashboard-berita-link" style="color: {{ $berita->bg_color ?? '#0d6efd' }};">Baca Selengkapnya...</a>
+                  </div>
                 </div>
+              @endif
             @empty
-                <div class="text-muted">Belum ada berita terbaru.</div>
+              <div class="text-muted">Belum ada berita terbaru.</div>
             @endforelse
             <a href="/berita" class="btn btn-dark btn-sm">LIHAT SEMUA BERITA</a>
         </div>
@@ -298,22 +363,82 @@
     </div>
 
     <!-- Galeri Section -->
-    <div class="dashboard-section-title">GALERY</div>
-    <div class="row mb-4">
-        @forelse($galeri ?? [] as $foto)
-            @if(is_object($foto) && isset($foto->file) && is_object($foto->file) && isset($foto->file->link_stream))
-                <div class="col-md-3 mb-3">
-                    <img src="{{ $foto->file->link_stream }}" class="dashboard-galeri-img" alt="Foto Galeri">
-                </div>
-            @endif
-        @empty
-            <div class="col-12 text-muted">Belum ada foto galeri.</div>
-        @endforelse
-        <div class="col-12">
-            <a href="/galeri" class="btn btn-dark btn-sm">LIHAT SEMUA GALERI</a>
+    <div class="dashboard-section-title">GALERI</div>
+    <section class="container py-5">
+        <div class="row">
+            @forelse($galeri ?? [] as $foto)
+                @if(is_object($foto) && isset($foto->file) && is_object($foto->file) && isset($foto->file->link_stream))
+                    <div class="col-md-4 col-sm-6 mb-4">
+                        <div class="galeri-img-card" style="position:relative;cursor:pointer;overflow:hidden;border-radius:8px;"
+                             onmouseover="showHoverInfo(this, '{{ $foto->nama_kegiatan ?? 'Nama Kegiatan' }}', '{{ $foto->file->link_stream }}')"
+                             onmouseout="hideHoverInfo(this)">
+                            <img src="{{ $foto->file->link_stream }}" alt="Galeri" class="dashboard-galeri-img" style="width:100%;height:auto;border-radius:8px;">
+                            <div class="galeri-img-hoverbox" style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;">
+                                <div class="hover-title" style="font-size:1rem;font-weight:bold;margin-bottom:8px;text-align:center;display:none;"></div>
+                                <a href="#" class="btn btn-light btn-sm hover-link" style="display:none;">LIHAT FOTO</a>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @empty
+                <div class="col-12 galeri-empty">Belum ada foto galeri.</div>
+            @endforelse
+            <div class="col-12">
+                <a href="/galeri" class="btn btn-dark btn-sm">LIHAT SEMUA GALERI</a>
+            </div>
         </div>
+    </section>
+
+    <!-- Modal for Galeri -->
+    <div id="galeriModal" class="galeri-modal-overlay" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:1050;align-items:center;justify-content:center;">
+      <div class="galeri-modal-content" style="background:#fff;padding:20px;border-radius:12px;max-width:600px;width:90%;text-align:center;position:relative;">
+        <button class="galeri-modal-close" onclick="closeGaleriModal()" style="position:absolute;top:10px;right:10px;background:none;border:none;font-size:1.5rem;color:#333;cursor:pointer;">&times;</button>
+        <div id="galeriModalTitle" class="galeri-modal-title" style="font-size:1.5rem;font-weight:bold;margin-bottom:12px;color:#333;"></div>
+        <img id="galeriModalImg" src="" alt="Galeri" style="width:100%;max-width:520px;max-height:60vh;object-fit:contain;border-radius:12px;margin-bottom:12px;">
+        <a id="galeriModalLink" href="#" class="btn btn-primary">Klik Selengkapnya</a>
+      </div>
     </div>
 
+    <script>
+    function showGaleriModal(e, title, imgSrc, detailLink) {
+      e.preventDefault();
+      document.getElementById('galeriModal').style.display = 'flex';
+      document.getElementById('galeriModalTitle').textContent = title;
+      document.getElementById('galeriModalImg').src = imgSrc;
+      document.getElementById('galeriModalLink').href = detailLink;
+    }
+    function closeGaleriModal() {
+      document.getElementById('galeriModal').style.display = 'none';
+    }
+    document.addEventListener('keydown', function(e) {
+      if(e.key === 'Escape') closeGaleriModal();
+    });
+    document.getElementById('galeriModal').addEventListener('click', function(e) {
+      if(e.target === this) closeGaleriModal();
+    });
+    function showHoverInfo(card, title, imgSrc) {
+      const hoverBox = card.querySelector('.galeri-img-hoverbox');
+      const hoverTitle = hoverBox.querySelector('.hover-title');
+      const hoverLink = hoverBox.querySelector('.hover-link');
+
+      hoverTitle.textContent = title;
+      hoverLink.href = imgSrc;
+
+      hoverTitle.style.display = 'block';
+      hoverLink.style.display = 'block';
+      hoverBox.style.opacity = '1';
+    }
+
+    function hideHoverInfo(card) {
+      const hoverBox = card.querySelector('.galeri-img-hoverbox');
+      const hoverTitle = hoverBox.querySelector('.hover-title');
+      const hoverLink = hoverBox.querySelector('.hover-link');
+
+      hoverTitle.style.display = 'none';
+      hoverLink.style.display = 'none';
+      hoverBox.style.opacity = '0';
+    }
+    </script>
     <!-- Lokasi Section -->
     <div style="font-family:'Arial Black','Arial','Segoe UI',sans-serif;font-size:3.5rem;font-weight:900;color:#0037ffff;letter-spacing:2px;text-transform:uppercase;border-bottom:6px solid #0037ffff;display:inline-block;padding-bottom:6px;line-height:1.1;margin-bottom:32px;">LOKASI</div>
     <div class="mb-4" style="margin-top:32px;">

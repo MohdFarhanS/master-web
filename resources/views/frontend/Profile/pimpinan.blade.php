@@ -87,8 +87,8 @@
         <div class="fw-bold mb-3 text-start" style="font-size:1.1rem;">Profile Pimpinan</div>
         @if(isset($profilePimpinan) && count($profilePimpinan))
             @foreach($profilePimpinan as $pimpinan)
-                <img src="{{ $pimpinan->file->link_stream ?? '' }}" alt="Foto Pimpinan" class="pimpinan-img">
-                <div class="pimpinan-name mt-3">{{ $pimpinan->nama ?? '-' }}</div>
+                <img src="{{ $pimpinan->file->link_stream ?? asset('images/default-profile.png') }}" alt="Foto Pimpinan" class="pimpinan-img">
+                <div class="pimpinan-name mt-3">{{ $pimpinan->nama ?? 'Nama tidak tersedia' }}</div>
             @endforeach
         @else
             <div class="pimpinan-empty">Belum ada data pimpinan.</div>

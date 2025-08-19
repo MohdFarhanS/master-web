@@ -66,10 +66,6 @@
             <p>{!! nl2br(e(!empty(trim($profileInstansi->tugas_fungsi ?? '')) ? $profileInstansi->tugas_fungsi : '-')) !!}</p>
           </div>
           @if(isset($profileInstansi->file) && is_object($profileInstansi->file) && isset($profileInstansi->file->link_stream))
-            <div class="mb-4">
-              <h4>Struktur Organisasi</h4>
-              <img src="{{ $profileInstansi->file->link_stream }}" alt="Struktur Organisasi" class="img-fluid" style="border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,0.1);">
-            </div>
           @endif
         @else
           <div class="instansi-empty">Belum ada data profil instansi.</div>

@@ -101,4 +101,9 @@ class FrontendController extends Controller
         $kontak = Kontak::first();
         return view('frontend.Kontak.kontak', compact('kontak'));
     }
+    // Detail galeri berdasarkan ID
+    public function galeriDetail($id) {
+        $foto = Galeri::with('file')->findOrFail($id);
+        return view('frontend.Galeri.detail', compact('foto'));
+    }
 }

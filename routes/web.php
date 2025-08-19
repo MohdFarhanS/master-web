@@ -33,6 +33,7 @@ Route::get('/berita/{id}', [FrontendController::class, 'beritaDetail'])->name('b
 
 // Galeri
 Route::get('/galeri', [FrontendController::class, 'galeri'])->name('galeri');
+Route::get('/galeri/{id}', [FrontendController::class, 'galeriDetail'])->name('galeri.detail');
 
 // Pengumuman
 Route::get('/pengumuman', [FrontendController::class, 'pengumuman'])->name('pengumuman');
