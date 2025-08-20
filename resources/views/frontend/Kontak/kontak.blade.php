@@ -2,8 +2,9 @@
 @section('content')
 <style>
   .kontak-header-bg {
-    background: #fdf1f1;
+    background: linear-gradient(135deg, #e4ebffff 0%, #002affff 100%);
     padding: 48px 0 24px 0;
+    color: white;
     margin-bottom: 0;
     text-align: center;
   }

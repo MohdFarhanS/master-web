@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Routing\Controller as Controller;
 use Illuminate\Support\Facades\View;
+use App\Models\Dashboard;
 use App\Models\ProfileInstansi;
 use App\Models\ProfilePimpinan;
 use App\Models\Berita;
@@ -35,6 +36,15 @@ class FrontendController extends Controller
             'kontak',
             'banners'
         ));
+    }
+
+    public function __construct()
+    {
+        $dashboardInstansi = DashboardInstansi::first() ?? (object)[
+            'judul' => 'Dashboard Instansi',
+            'deskripsi' => 'Belum ada data instansi.'
+        ];
+        view()->share('dashboardInstansi', $dashboardInstansi);
     }
 
     public function instansi()

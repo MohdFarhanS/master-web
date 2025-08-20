@@ -6,7 +6,7 @@
       @else
         <img src="{{ asset('images/logo.png') }}" alt="Logo" style="height:40px;width:auto;" class="me-2">
       @endif
-      {{ $dashboardInstansi->nama ?? 'Badan Riset dan Inovasi Daerah' }} <br>{{ $dashboardInstansi->provinsi ?? 'Provinsi Riau' }}
+      {{ $dashboardInstansi->nama_instansi }} <br>{{ $dashboardInstansi->provinsi ?? 'Provinsi Riau' }}
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
