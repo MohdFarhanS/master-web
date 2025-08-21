@@ -16,38 +16,56 @@
   }
   .berita-img {
     width: 100%;
-    height: 220px;
+    height: 320px;
     object-fit: cover;
-    border-radius: 0 0 0 0;
+    border-radius: 8px;
+    display: block;
   }
   .berita-date {
     position: absolute;
-    left: 18px;
-    top: 18px;
+    left: 32px;
+    top: 260px;
+    background: #2976f1ff;
     color: #fff;
-    padding: 8px 14px;
-    border-radius: 10px;
-    font-weight: 700;
     font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 12px 18px 6px 18px;
     text-align: center;
-    line-height: 1.1;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    line-height: 1.3;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
   }
   .berita-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 8px;
+    font-size: 1.8rem;
+    font-weight: 700;
     color: #232323;
+    margin: 24px 0 12px 0;
+    text-shadow: 1px 1px 0 #fff;
+    transition: color 0.3s;
+  }
+  .berita-title a {
+    text-decoration: none;
+    color: inherit;
+  }
+  .berita-title a:hover {
+    color: #0d6efd; /* Warna biru saat diklik */
   }
   .berita-desc {
+    font-size: 1.2rem;
     color: #444;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
   }
   .sidebar-post {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #eee;
+    border-bottom: 2px solid #eee;
     padding: 10px 0;
     margin: 15px;
   }
@@ -60,15 +78,18 @@
   }
   .sidebar-post-title {
     font-weight: 600;
-    font-size: 0.98rem;
+    font-size: 1.05rem;
     color: #232323;
     margin-bottom: 2px;
     text-decoration: none;
     display: block;
+    transition: color 0.3s;
   }
-  .sidebar-post-date {
-    color: #888;
-    font-size: 0.92rem;
+  .sidebar-post-title:visited {
+    color: #232323; /* Tetap hitam setelah diklik */
+  }
+  .sidebar-post-title:hover {
+    color: #0d6efd; /* Warna biru saat hover */
   }
 
    .berita-header-bg {
@@ -86,6 +107,7 @@
     line-height: 1.1;
   }
 </style>
+
 <div class="berita-header-bg">
   <div class="berita-header-title">BERITA</div>
 </div>
@@ -97,30 +119,30 @@
         @if(is_object($berita))
         <div class="berita-card">
           <div class="position-relative">
-            @if(isset($berita->file) && is_object($berita->file) && isset($berita->file->link_stream) && $berita->file->link_stream)
-              <img src="{{ $berita->file->link_stream }}" class="berita-img" alt="Berita">
-            @else
-              <img src="/img/berita-default.jpg" class="berita-img" alt="Berita">
-            @endif
-            @if(isset($berita->created_at))
-              <div class="berita-date" style="background-color: {{ $berita->bg_color }}">
-                {{ $berita->created_at->format('d') }}<br><span style="font-size:1rem;font-weight:400; ">{{ $berita->created_at->format('M') }}</span>
-              </div>
-            @endif
-          </div>
-          <div class="p-4">
-            <div class="berita-title">{{ $berita->judul ?? '-' }}</div>
-            <div class="berita-desc">{!! \Illuminate\Support\Str::limit(strip_tags($berita->isi ?? ''), 200) !!}</div>
-            <a href="{{ route('berita.detail', $berita->id ?? 0) }}" style="color: {{ $berita->bg_color }}; font-weight: 600; text-decoration: underline;">Baca Selengkapnya...</a>
-          </div>
+                  @if(isset($berita->file) && is_object($berita->file) && isset($berita->file->link_stream))
+                      <img src="{{ $berita->file->link_stream }}" class="berita-img" alt="Berita">
+                    @else
+                      <img src="/img/berita-default.jpg" class="berita-img" alt="Berita">
+                    @endif
+                    @if(isset($berita->created_at))
+                      <div class="berita-date">
+                        {{ $berita->created_at->format('d M') }}
+                    </div>
+                    @endif
+                  </div>
+                  <div class="berita-content">
+                    <div class="berita-title">
+                      <a href="{{ route('berita.detail', $berita->id ?? 0) }}">{{ $berita->judul ?? '-' }}</a>
+                    </div>
+                    <div class="berita-desc">{!! \Illuminate\Support\Str::limit(strip_tags($berita->deskripsi ?? 'deskripsi_berita'), 200) !!}</div>
+                  </div>
+                </div>
+              @endif
+            @empty
+              <div class="text-muted">Belum ada berita terbaru.</div>
+            @endforelse
+            <a href="/berita" class="btn btn-dark btn-sm">LIHAT SEMUA BERITA</a>
         </div>
-        @endif
-      @empty
-        <div class="text-muted">Belum ada berita terbaru.</div>
-      @endforelse
-      <div class="text-center mt-4">
-        <a href="/berita" class="btn btn-dark btn-sm px-4">LIHAT SEMUA BERITA</a>
-      </div>
     </div>
     <div class="col-lg-4 d-none d-lg-block">
       <div class="card shadow-sm border-0 rounded-4 mb-4">

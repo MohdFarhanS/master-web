@@ -1,5 +1,5 @@
 <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top shadow-sm py-2" style="transition:background 0.3s;z-index:1055;">
-  <div class="container-fluid">
+<div class="container-fluid">
     <a class="navbar-brand fw-bold d-flex align-items-center" href="/dashboard">
       @if(isset($dashboardInstansi->file) && is_object($dashboardInstansi->file) && isset($dashboardInstansi->file->link_stream))
         <img src="{{ $dashboardInstansi->file->link_stream }}" alt="Logo" style="height:40px;width:auto;" class="me-2">

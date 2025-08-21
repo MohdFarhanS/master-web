@@ -92,6 +92,27 @@
         margin: 24px 0 12px 0;
         text-shadow: 1px 1px 0 #fff;
     }
+    .dashboard-berita-title a {
+        color: #232323; /* Warna hitam default */
+        text-decoration: none;
+    }
+    .dashboard-berita-title a:visited {
+        color: #232323; /* Tetap hitam setelah dikunjungi */
+    }
+    .dashboard-berita-title a:hover {
+        color: #0d6efd; /* Warna biru saat disorot */
+    }
+
+    .sidebar-post-title {
+        color: #232323; /* Warna hitam default */
+        text-decoration: none;
+    }
+    .sidebar-post-title:visited {
+        color: #232323; /* Tetap hitam setelah dikunjungi */
+    }
+    .sidebar-post-title:hover {
+        color: #0d6efd; /* Warna biru saat disorot */
+    }
     .dashboard-berita-desc {
         font-size: 1.4rem;
         color: #232323;
@@ -286,9 +307,17 @@
                     @endif
                   </div>
                   <div class="dashboard-berita-content">
-                    <div class="dashboard-berita-title">{{ $berita->judul ?? '-' }}</div>
-                    <div class="dashboard-berita-desc">{!! \Illuminate\Support\Str::limit(strip_tags($berita->deskripsi ?? 'deskripsi_berita'), 200) !!}</div>
-                    <a href="{{ route('berita.detail', $berita->id ?? 0) }}" class="dashboard-berita-link" style="color: {{ $berita->bg_color ?? '#0d6efd' }};">Baca Selengkapnya...</a>
+                    <div class="dashboard-berita-title">
+                      <a href="{{ route('berita.detail', $berita->id ?? 0) }}" style="text-decoration: none; color: inherit;">
+                        {{ $berita->judul ?? '-' }}
+                      </a>
+                    </div>
+                    <div class="dashboard-berita-desc">
+                      {!! \Illuminate\Support\Str::limit(strip_tags($berita->deskripsi ?? 'deskripsi_berita'), 200) !!}
+                    </div>
+                    <a href="{{ route('berita.detail', $berita->id ?? 0) }}" class="dashboard-berita-link" style="color: {{ $berita->bg_color ?? '#0d6efd' }}; text-decoration: underline;">
+                      Lihat Selengkapnya...
+                    </a>
                   </div>
                 </div>
               @endif
@@ -434,6 +463,14 @@
     <div style="font-family:'Arial Black','Arial','Segoe UI',sans-serif;font-size:3.5rem;font-weight:900;color:#0037ffff;letter-spacing:2px;text-transform:uppercase;border-bottom:6px solid #0037ffff;display:inline-block;padding-bottom:6px;line-height:1.1;margin-bottom:32px;">LOKASI</div>
     <div class="mb-4" style="margin-top:32px;">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.728282019839!2d101.45582153528665!3d0.523317600930215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31d5ade64f297b57%3A0x2ee541838c361bba!2sBadan%20Riset%20dan%20Inovasi%20Daerah%20(BRIDA)%20Provinsi%20Riau!5e0!3m2!1sid!2sid!4v1753763766945!5m2!1sid!2sid" width="100%" height="420" style="border:0;min-width:320px;max-width:100vw;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="dashboard-logo">
+        @if(isset($dashboardInstansi->file) && is_object($dashboardInstansi->file) && isset($dashboardInstansi->file->link_stream))
+            <img src="{{ $dashboardInstansi->file->link_stream }}" alt="Logo" style="height:80px;width:auto;">
+        @else
+            <img src="{{ asset('images/logo.png') }}" alt="Default Logo" style="height:80px;width:auto;">
+        @endif
     </div>
 
 </section>
